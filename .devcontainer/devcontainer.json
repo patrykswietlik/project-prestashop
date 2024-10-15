@@ -1,0 +1,12 @@
+{
+	"name": "PrestaShop Development",
+	"context": "..",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "prestashop",
+	"workspaceFolder": "/var/www/html",
+	"extensions": ["ms-azuretools.vscode-docker"],
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+	"postCreateCommand": "apt-get update && apt-get install -y git"
+}
