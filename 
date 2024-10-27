@@ -1,0 +1,150 @@
+[1mdiff --git a/prestashop/html/admin870iqyhcr/.htaccess b/prestashop/html/admin870iqyhcr/.htaccess[m
+[1mdeleted file mode 100644[m
+[1mindex a1855e3..0000000[m
+[1m--- a/prestashop/html/admin870iqyhcr/.htaccess[m
+[1m+++ /dev/null[m
+[36m@@ -1,77 +0,0 @@[m
+[31m-# Use the front controller as index file. It serves as a fallback solution when[m
+[31m-# every other rewrite/redirect fails (e.g. in an aliased environment without[m
+[31m-# mod_rewrite). Additionally, this reduces the matching process for the[m
+[31m-# start page (path "/") because otherwise Apache will apply the rewriting rules[m
+[31m-# to each configured DirectoryIndex file (e.g. index.php, index.html, index.pl).[m
+[31m-DirectoryIndex index.php[m
+[31m-[m
+[31m-# By default, Apache does not evaluate symbolic links if you did not enable this[m
+[31m-# feature in your server configuration. Uncomment the following line if you[m
+[31m-# install assets as symlinks or if you experience problems related to symlinks[m
+[31m-# when compiling LESS/Sass/CoffeScript assets.[m
+[31m-# Options FollowSymlinks[m
+[31m-[m
+[31m-# Disabling MultiViews prevents unwanted negotiation, e.g. "/app" should not resolve[m
+[31m-# to the front controller "/app.php" but be rewritten to "/app.php/app".[m
+[31m-<IfModule mod_negotiation.c>[m
+[31m-    Options -MultiViews[m
+[31m-</IfModule>[m
+[31m-[m
+[31m-<IfModule mod_rewrite.c>[m
+[31m-    RewriteEngine On[m
+[31m-[m
+[31m-    # Determine the RewriteBase automatically and set it as environment variable.[m
+[31m-    # If you are using Apache aliases to do mass virtual hosting or installed the[m
+[31m-    # project in a subdirectory, the base path will be prepended to allow proper[m
+[31m-    # resolution of the app.php file and to redirect to the correct URI. It will[m
+[31m-    # work in environments without path prefix as well, providing a safe, one-size[m
+[31m-    # fits all solution. But as you do not need it in this case, you can comment[m
+[31m-    # the following 2 lines to eliminate the overhead.[m
+[31m-    RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$[m
+[31m-    RewriteRule ^(.*) - [E=BASE:%1][m
+[31m-[m
+[31m-    # Sets the HTTP_AUTHORIZATION header removed by apache[m
+[31m-    RewriteCond %{HTTP:Authorization} .[m
+[31m-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}][m
+[31m-[m
+[31m-    # Keep legacy entry points[m
+[31m-    RewriteRule ^(ajax|ajax_products_list|ajax-tab|backup|cron_currency_rates)\.php - [P][m
+[31m-    RewriteRule ^(displayImage|drawer|footer\.inc|functions|get-file-admin)\.php - [P][m
+[31m-    RewriteRule ^(grider|header\.inc|init|login|password|pdf|searchcron)\.php - [P][m
+[31m-[m
+[31m-    # If the URL is a legacy on index.php?controller=..., do not rewrite (let the legacy take it)[m
+[31m-    RewriteCond  %{QUERY_STRING} (^|&)controller=|(^|&)tab=[m
+[31m-    RewriteRule .* - [P][m
+[31m-[m
+[31m-    # Redirect to URI without front controller to prevent duplicate content[m
+[31m-    # (with and without `/app.php`). Only do this redirect on the initial[m
+[31m-    # rewrite by Apache and not on subsequent cycles. Otherwise we would get an[m
+[31m-    # endless redirect loop (request -> rewrite to front controller ->[m
+[31m-    # redirect -> request -> ...).[m
+[31m-    # So in case you get a "too many redirects" error or you always get redirected[m
+[31m-    # to the start page because your Apache does not expose the REDIRECT_STATUS[m
+[31m-    # environment variable, you have 2 choices:[m
+[31m-    # - disable this feature by commenting the following 2 lines or[m
+[31m-    # - use Apache >= 2.3.9 and replace all L flags by END flags and remove the[m
+[31m-    #   following RewriteCond (best solution)[m
+[31m-    # RewriteCond %{ENV:REDIRECT_STATUS} ^$[m
+[31m-    # RewriteRule ^index\.php(/(.*)) %{ENV:BASE}/$2 [R=301,L][m
+[31m-[m
+[31m-    # If the requested filename exists, simply serve it.[m
+[31m-    # We only want to let Apache serve files and not directories.[m
+[31m-    RewriteCond %{REQUEST_FILENAME} -f[m
+[31m-    RewriteRule .? - [L][m
+[31m-[m
+[31m-    # Rewrite all other queries to the front controller.[m
+[31m-    RewriteRule .? %{ENV:BASE}/index.php [L][m
+[31m-</IfModule>[m
+[31m-[m
+[31m-<IfModule !mod_rewrite.c>[m
+[31m-    <IfModule mod_alias.c>[m
+[31m-        # When mod_rewrite is not available, we instruct a temporary redirect of[m
+[31m-        # the start page to the front controller explicitly so that the website[m
+[31m-        # and the generated links can still be used.[m
+[31m-        RedirectMatch 302 ^/$ /index.php/[m
+[31m-        # RedirectTemp cannot be used instead[m
+[31m-    </IfModule>[m
+[31m-</IfModule>[m
+[1mdiff --git a/prestashop/html/admin870iqyhcr/ajax-tab.php b/prestashop/html/admin870iqyhcr/ajax-tab.php[m
+[1mdeleted file mode 100644[m
+[1mindex 1c2065f..0000000[m
+[1m--- a/prestashop/html/admin870iqyhcr/ajax-tab.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,32 +0,0 @@[m
+[31m-<?php[m
+[31m-/**[m
+[31m- * Copyright since 2007 PrestaShop SA and Contributors[m
+[31m- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA[m
+[31m- *[m
+[31m- * NOTICE OF LICENSE[m
+[31m- *[m
+[31m- * This source file is subject to the Open Software License (OSL 3.0)[m
+[31m- * that is bundled with this package in the file LICENSE.md.[m
+[31m- * It is also available through the world-wide-web at this URL:[m
+[31m- * https://opensource.org/licenses/OSL-3.0[m
+[31m- * If you did not receive a copy of the license and are unable to[m
+[31m- * obtain it through the world-wide-web, please send an email[m
+[31m- * to license@prestashop.com so we can send you a copy immediately.[m
+[31m- *[m
+[31m- * DISCLAIMER[m
+[31m- *[m
+[31m- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer[m
+[31m- * versions in the future. If you wish to customize PrestaShop for your[m
+[31m- * needs please refer to https://devdocs.prestashop.com/ for more information.[m
+[31m- *[m
+[31m- * @author    PrestaShop SA and Contributors <contact@prestashop.com>[m
+[31m- * @copyright Since 2007 PrestaShop SA and Contributors[m
+[31m- * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)[m
+[31m- */[m
+[31m-[m
+[31m-@trigger_error('Using '.__FILE__.' to make an ajax call is deprecated since 1.7.6.0 and will be removed in the nex major version. Use a controller instead.', E_USER_DEPRECATED);[m
+[31m-[m
+[31m-// Retrocompatibility with 1.4[m
+[31m-$_REQUEST['ajaxMode'] = $_POST['ajaxMode'] = $_GET['ajaxMode'] = $_REQUEST['ajax'] = $_POST['ajax'] = $_GET['ajax'] = 1;[m
+[31m-[m
+[31m-require_once dirname(__FILE__).'/index.php';[m
+[1mdiff --git a/prestashop/html/admin870iqyhcr/ajax.php b/prestashop/html/admin870iqyhcr/ajax.php[m
+[1mdeleted file mode 100644[m
+[1mindex 09cee1f..0000000[m
+[1m--- a/prestashop/html/admin870iqyhcr/ajax.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,180 +0,0 @@[m
+[31m-<?php[m
+[31m-/**[m
+[31m- * Copyright since 2007 PrestaShop SA and Contributors[m
+[31m- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA[m
+[31m- *[m
+[31m- * NOTICE OF LICENSE[m
+[31m- *[m
+[31m- * This source file is subject to the Open Software License (OSL 3.0)[m
+[31m- * that is bundled with this package in the file LICENSE.md.[m
+[31m- * It is also available through the world-wide-web at this URL:[m
+[31m- * https://opensource.org/licenses/OSL-3.0[m
+[31m- * If you did not receive a copy of the license and are unable to[m
+[31m- * obtain it through the world-wide-web, please send an email[m
+[31m- * to license@prestashop.com so we can send you a copy immediately.[m
+[31m- *[m
+[31m- * DISCLAIMER[m
+[31m- *[m
+[31m- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer[m
+[31m- * versions in the future. If you wish to customize PrestaShop for your[m
+[31m- * needs please refer to https://devdocs.prestashop.com/ for more information.[m
+[31m- *[m
+[31m- * @author    PrestaShop SA and Contributors <contact@prestashop.com>[m
+[31m- * @copyr
