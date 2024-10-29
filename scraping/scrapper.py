@@ -21,6 +21,12 @@ if category_section:
         a_tag = item.find('a',class_='nav-top-link')
         if a_tag:
             category_name = a_tag.get_text(strip=True)
-            print(category_name)
+            print("["+category_name+"]")
+        else:
+            a2_tag = item.find('a')
+            if a2_tag:
+                category_name = a2_tag.get_text(strip=True)
+                print(category_name)
+
 else:
     print("empty")
