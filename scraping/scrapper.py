@@ -9,12 +9,18 @@ page=requests.get(url,headers=HEADERS)
 soup=BeautifulSoup(page.text,'html.parser')
 #print(soup)
 #print(soup.find('div',class_='header-bottom wide-nav hide-for-sticky hide-for-medium'))
-category_items = soup.find_all('div', class_='header-bottom wide-nav hide-for-sticky hide-for-medium')
-#print(category_items)
-category_items=soup.find_all('li')
-print(category_items)
-for item in category_items:
-    a_tag = item.find('a')
-    if a_tag:
-        category_name = a_tag.get_text(strip=True)
-        print(category_name)
+category_section = soup.find('div', id='wrapper')
+category_section=category_section.find('div',class_='header-wrapper')
+category_section = soup.find('div', id='wide-nav')
+#category_section=category_section.find('div',class_='flex-col.hide-for-medium.flex-left')
+print(category_section)
+if category_section:
+    header=category_section.find_all('li')
+    #print(header)
+    for item in header:
+        a_tag = item.find('a',class_='nav-top-link')
+        if a_tag:
+            category_name = a_tag.get_text(strip=True)
+            print(category_name)
+else:
+    print("empty")
