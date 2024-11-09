@@ -53,26 +53,34 @@ def gettingNamesofSubcattegories():
         print("empty")
 
 def productsCategories(url):
+    products=[]
     page=requests.get(url,headers=HEADERS)
     soup=BeautifulSoup(page.text,'html.parser')
-    category_section = soup.find('div', class_='product-small box')
-    if category_section:
-        links=category_section.find_all('li')
-        for item in links:
-            a_tag = item.find('a',class_='nav-top-link')
-            if a_tag:
-                category_list = [a_tag['href']] 
-                sub_menu = item.find('ul', class_='sub-menu nav-dropdown nav-dropdown-simple')
-                if sub_menu:
-                    for sub_item in sub_menu.find_all('a'):
-                        category_list.append(sub_item['href'])
-                urls.append(category_list)
-    else:
-        print("empty")
+    category_section = soup.findAll('div', class_='product-small box')
+    for item in category_section:
+        images=item.find('div',class_='box-image')
+        infos=item.find('div',class_='box-text box-text-products text-center grid-style-2')
+        if infos:
+            text=infos.find('a',class_='woocommerce-LoopProduct-link woocommerce-loop-product__link')
+            product_info = [text['href']] 
+            sub_item=text.get_text(strip=True)
+            product_info.append(sub_item)
+            rating=infos.find('div', class_='star-rating star-rating--inline')
+            if rating:
+                sub_item=rating.get_text(strip=True)
+                product_info.append(sub_item)
+            products.append(product_info)
+        print(products)
+        
+# adressesOfSubclasses(urls)
+# printUrls(urls)
+productsCategories('https://marvelofficial.com/product-category/cosplay-costume/')
 
-adressesOfSubclasses(urls)
-printUrls(urls)
 
+# <div class="box-text box-text-products text-center grid-style-2" style="height: 141px;">
+# 			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 59.5px;"><a href="https://marvelofficial.com/product/mark-5-iron-man-helmet-1-1-replica/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Mark 5 Iron Man Helmet 1:1 Replica</a></p></div><div class="price-wrapper" style="height: 48.4px;"><div class="star-rating star-rating--inline" role="img" aria-label="Rated 4.85 out of 5"><span style="width:97%">Rated <strong class="rating">4.85</strong> out of 5</span></div>
+# 	<span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>590.75</bdi></span></del> <span class="screen-reader-text">Original price was: $590.75.</span><ins aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>410.75</bdi></span></ins><span class="screen-reader-text">Current price is: $410.75.</span></span>
+# </div>		</div>
 #<div class="product-small box ">
 # 		<div class="box-image">
 # 			<div class="image-fade_in_back">
@@ -92,3 +100,8 @@ printUrls(urls)
 # 	<span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>590.75</bdi></span></del> <span class="screen-reader-text">Original price was: $590.75.</span><ins aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>410.75</bdi></span></ins><span class="screen-reader-text">Current price is: $410.75.</span></span>
 # </div>		</div>
 # 	</div>
+#<div class="star-rating star-rating--inline" role="img" 
+# aria-label="Rated 4.85 out of 5"><span style="width:97%">Rated
+#  <strong class="rating">4.85</strong> out of 5</span></div>
+#<a href="https://marvelofficial.com/product/mark-5-iron-man-helmet-1-1-replica/" 
+#class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Mark 5 Iron Man Helmet 1:1 Replica</a>
