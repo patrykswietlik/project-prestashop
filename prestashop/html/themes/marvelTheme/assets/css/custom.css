@@ -89,3 +89,60 @@
   padding: .6em;
   text-transform: uppercase;
 }
+
+.custom__banner {
+  width: 100%;
+  border: 1px solid red;
+}
+
+.custom_banner-header {
+  text-align: center;
+}
+
+.custom_banner-header h2 {
+  font-size: 1.6em;
+  line-height: 1.3;
+  color: #555;
+  margin-bottom: .5em;
+  margin-top: 0;
+  text-rendering: optimizeSpeed;
+  width: 100%;
+}
+
+.custom_banner-header h3 {
+  font-size: 1.25em;
+}
+
+.custom_banner-header h3 {
+  text-align: center;
+  font-weight: 700;
+  font-style: normal;
+  color: #555;
+}
+
+.custom__filter {
+  width: 100%;
+  min-height: 60px;
+  padding: 20px;
+  background-color: #324661;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom__container {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 1050px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom__container span {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}

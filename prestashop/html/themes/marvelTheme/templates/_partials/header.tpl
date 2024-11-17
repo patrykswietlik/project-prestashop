@@ -9,3 +9,14 @@
         {hook h='displayNav2'}
     </div>
 </div>
+<div class="custom__filter">
+    <div class="custom__container">
+        <div>
+            <span>Marvel Official Shop</span><br>
+            <span>Filter</span>
+        </div>
+        <div>
+            <span>Sort By Popularity</span>
+        </div>
+    </div>
+</div>
