@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.custom__header-wrapper {
+  position: relative;
+  width: 100%;
+  height: 91px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom__search-box, .custom__login_cart {
+  flex: 1 1 0;
+  display: flex;
+
+}
+
+.custom__login_cart {
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+#logo img {
+  max-height: 91px;
+  padding: 13px 0;
+  height: auto;
+  max-width: 100%;
+  margin: 0 30px;
+}
+
+#search_widget {
+  width: 73%;
+}
+
+#search_widget form input {
+  width: 73%;
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, .03);
+  border: 1px solid #ddd;
+  border-radius: 99px;
+  height: 2.507em;
+  padding: 0 .75em;
+  font-size: .85em;
+  color: #525252;
+  opacity: 1;
+}
+
+#search_widget form input::placeholder {
+  color: #525252;
+  opacity: 1;
+  font-size: 13.6px;
+}
+
+#search_widget form i {
+  right: .6rem;
+  top: 50%;
+  right: 27%;
+  margin-right: .3rem;
+  transform: translateY(-50%);
+  padding: 0;
+}
+
+#_desktop_language_selector {
+  display: none;
+}
+
+.user-info a i {
+  display: none;
+}
+
+.user-info a {
+  min-width: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid silver;
+}
+
+.user-info a span {
+  font-size: .8em;
+  color: #c0c0c0;
+  padding: .6em;
+  text-transform: uppercase;
+}
