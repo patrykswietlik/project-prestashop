@@ -146,3 +146,54 @@
   text-transform: uppercase;
   letter-spacing: 0;
 }
+
+#wrapper {
+  background-color: #fff;
+}
+
+.custom__label {
+  border-radius: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-size: .97em;
+  font-weight: bolder;
+  letter-spacing: .03em;
+  margin-right: 1em;
+  margin-top: 0;
+  max-width: 100%;
+  min-height: 2.5em;
+  padding: 0 1.2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  text-shadow: none;
+  text-transform: uppercase;
+  transition: transform .3s, border .3s, background .3s, box-shadow .3s, opacity .3s, color .3s;
+  vertical-align: middle;
+  margin-bottom: 1em;
+  line-height: 2.19em;
+  background-color: transparent;
+  border: 2px solid;
+  color: #446084;
+}
+
+.custom__label:hover {
+  background-color: #446084;
+  color: white;
+  border: 2px solid;
+  border-color: #446084;
+}
+
+.custom__label--reverse {
+  background-color: #446084;
+  color: white;
+  border: 2px solid;
+  border-color: #446084;
+}
+
+.custom__label--reverse:hover {
+  background-color: #374d6b;
+  border-color: #374d6b;
+}
