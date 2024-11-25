@@ -1,9 +1,15 @@
 from bs4 import BeautifulSoup
+from selenium import webdriver
 import requests
+import re
+import os
+import json
 
 HEADERS = {'User-Agent': 'Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'}
 URL="https://marvelofficial.com/shop/?fbclid=IwZXh0bgNhZW0CMTAAAR3OzSpffy0uw1Yeq72BBzE1fOb_DCkAK2pFNSAJI2WhkjbZZELRfwS_gpA_aem_i6ncYj8tTY9jABG0vPnrxw"
 urls=[]
+product_details=[]
+product_visited=[]
 
 def adressesOfSubclasses(urls):
     page=requests.get(URL,headers=HEADERS)
@@ -54,54 +60,152 @@ def gettingNamesofSubcattegories():
 
 def productsCategories(url):
     products=[]
+    #products.append(url)
     page=requests.get(url,headers=HEADERS)
     soup=BeautifulSoup(page.text,'html.parser')
-    category_section = soup.findAll('div', class_='product-small box')
-    for item in category_section:
-        images=item.find('div',class_='box-image')
-        infos=item.find('div',class_='box-text box-text-products text-center grid-style-2')
-        if infos:
-            text=infos.find('a',class_='woocommerce-LoopProduct-link woocommerce-loop-product__link')
-            product_info = [text['href']] 
-            sub_item=text.get_text(strip=True)
-            product_info.append(sub_item)
-            rating=infos.find('div', class_='star-rating star-rating--inline')
-            if rating:
-                sub_item=rating.get_text(strip=True)
+    while True:
+        category_section = soup.findAll('div', class_='product-small box')
+        for item in category_section:
+            infos=item.find('div',class_='box-text box-text-products text-center grid-style-2')
+            if infos:
+                text=infos.find('a',class_='woocommerce-LoopProduct-link woocommerce-loop-product__link')
+                product_info = [text['href']] 
+    
+                if product_info[0] not in product_visited: #sprawdzamy czy dany obiekt juz scrappowany
+                    product_visited.append(product_info[0])
+                    product_details.append(productSite(product_info[0]))
+
+                sub_item=text.get_text(strip=True)
                 product_info.append(sub_item)
-            products.append(product_info)
-        print(products)
-        
-# adressesOfSubclasses(urls)
+                rating=infos.find('div', class_='star-rating star-rating--inline')
+                if rating:
+                    sub_item=rating.get_text(strip=True)
+                    product_info.append(sub_item)
+                else:
+                    sub_item=None
+                    product_info.append(sub_item)
+                prices=infos.findAll('span',class_='woocommerce-Price-amount amount')
+                for price in prices:
+                    product_info.append(price.get_text(strip=True))
+                if len(prices)==1:
+                    product_info.append(None)
+                products.append(product_info)
+        next_page=soup.find('a', class_='next page-number')
+        if next_page:
+            href = next_page['href']
+            page=requests.get(href,headers=HEADERS)
+            soup=BeautifulSoup(page.text,'html.parser')
+        else:
+            print("Link nie znaleziony.")
+            break
+    #print(products)
+
+def saveImages(images,infos):
+    folder = "Mark5"
+    #infos[0]
+    print(images)
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    else:
+        print(f"Folder '{folder}' already exists. Proceeding with downloads.")
+    print(f"jestem w f-cji nazwa folderu to {folder}")
+    for idx, url in enumerate(images):
+        try:
+            response = requests.get(url, stream=True)
+            if response.status_code == 200:
+                file_name = os.path.join(folder, f'image_{idx + 1}.jpg')
+                with open(file_name, 'wb') as file:
+                    file.write(response.content)
+                print(f"Downloaded: {file_name}")
+            else:
+                print(f"Failed to download {url} - Status code: {response.status_code}")
+        except Exception as e:
+            print(f"Error downloading {url} - {e}")
+
+def getFullSizeUrl(thumbnail_url):
+    # Use a regex to remove the size part (e.g., -247x296)
+    full_size_url = re.sub(r'-\d+x\d+(?=\.\w+$)', '', thumbnail_url)
+    return full_size_url
+
+def productSite(url):
+    product=[]
+    product.append(url)
+    image_urls=[]
+    page=requests.get(url,headers=HEADERS)
+    soup=BeautifulSoup(page.text,'html.parser')
+    # driver = webdriver.Chrome()  # Ensure you have the ChromeDriver installed
+    # driver.get(url)
+    # driver.implicitly_wait(5)
+    # soup_images = BeautifulSoup(driver.page_source, 'html.parser')
+    # images = soup_images.find('div', class_='flickity-slider')
+    # if images:
+    #     for img_tag in images.find_all('img'):
+    #         src = img_tag.get('src')
+    #         if src:
+    #             image_urls.append(getFullSizeUrl(src))
+    # else:
+    #     print(f"kurwa nie ma tych images")
+    # driver.quit()
+
+    #krotkie info
+    infos=soup.find('div',class_='product-short-description')
+    if infos:
+        delivery=infos.find('span')
+        if delivery:
+            full_name_tag=infos.find_all('p')[1]
+            if full_name_tag:
+                title = full_name_tag.get_text(strip=True)
+                product.append(title)
+            delivery=delivery.get_text(strip=True)
+            product.append(delivery)
+        else:
+            full_name_tag=infos.find_all('p')[0]
+            if full_name_tag:
+                title = full_name_tag.get_text(strip=True)
+                product.append(title)
+            product.append(None)
+        properties=infos.find_all('li')
+        properties_list=[]
+        for property_m in properties:
+            property=property_m.get_text(strip=True)
+            properties_list.append(property)
+        product.append(properties_list)
+        stock=soup.find('p',class_="stock in-stock")
+        if stock:
+            stock=stock.get_text(strip=True)
+            product.append(stock)
+        else:
+            product.append(None)
+    print(product)
+    #opis produktu
+    description_div=soup.find('div',class_="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content active")
+    content = []
+    if description_div:
+        for element in description_div.find_all(recursive=False):
+            if element.name in ['p', 'h2', 'ul', 'li']:
+                if element.name in ['p', 'h2']:
+                    content.append(element.get_text(strip=True))
+                elif element.name == 'ul':
+                    for li in element.find_all('li'):
+                        content.append(f"- {li.get_text(strip=True)}")
+    else:
+        print("Description div not found.")
+    
+    for line in content:
+        print(line)
+    product.append(content)
+  #  saveImages(image_urls,product)
+    return product
+  
+
+gettingNamesofSubcattegories()
+adressesOfSubclasses(urls)
+
 # printUrls(urls)
-productsCategories('https://marvelofficial.com/product-category/cosplay-costume/')
-
-
-# <div class="box-text box-text-products text-center grid-style-2" style="height: 141px;">
-# 			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 59.5px;"><a href="https://marvelofficial.com/product/mark-5-iron-man-helmet-1-1-replica/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Mark 5 Iron Man Helmet 1:1 Replica</a></p></div><div class="price-wrapper" style="height: 48.4px;"><div class="star-rating star-rating--inline" role="img" aria-label="Rated 4.85 out of 5"><span style="width:97%">Rated <strong class="rating">4.85</strong> out of 5</span></div>
-# 	<span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>590.75</bdi></span></del> <span class="screen-reader-text">Original price was: $590.75.</span><ins aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>410.75</bdi></span></ins><span class="screen-reader-text">Current price is: $410.75.</span></span>
-# </div>		</div>
-#<div class="product-small box ">
-# 		<div class="box-image">
-# 			<div class="image-fade_in_back">
-# 				<a href="https://marvelofficial.com/product/mark-5-iron-man-helmet-1-1-replica/" aria-label="Mark 5 Iron Man Helmet 1:1 Replica">
-# 					<img width="247" height="296" src="https://marvelofficial.com/wp-content/uploads/2020/09/B83A6311-14AE-4E5B-A1A4-48D7C101E4D3-247x296.jpeg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="Iron Man Helmet MK 5 - Iron Man Prop Replica - Marvelofficial.com" decoding="async" fetchpriority="high"><img width="247" height="296" src="https://marvelofficial.com/wp-content/uploads/2020/09/6CDF96A3-11D4-472D-A792-EAE3E9EBAAA7-247x296.jpeg" class="show-on-hover absolute fill hide-for-small back-image" alt="" decoding="async">				</a>
-# 			</div>
-# 			<div class="image-tools is-small top right show-on-hover">
-# 							</div>
-# 			<div class="image-tools is-small hide-for-small bottom left show-on-hover">
-# 							</div>
-# 			<div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-# 							</div>
-# 					</div>
-
-# 		<div class="box-text box-text-products text-center grid-style-2" style="height: 141px;">
-# 			<div class="title-wrapper"><p class="name product-title woocommerce-loop-product__title" style="height: 59.5px;"><a href="https://marvelofficial.com/product/mark-5-iron-man-helmet-1-1-replica/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Mark 5 Iron Man Helmet 1:1 Replica</a></p></div><div class="price-wrapper" style="height: 48.4px;"><div class="star-rating star-rating--inline" role="img" aria-label="Rated 4.85 out of 5"><span style="width:97%">Rated <strong class="rating">4.85</strong> out of 5</span></div>
-# 	<span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>590.75</bdi></span></del> <span class="screen-reader-text">Original price was: $590.75.</span><ins aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>410.75</bdi></span></ins><span class="screen-reader-text">Current price is: $410.75.</span></span>
-# </div>		</div>
-# 	</div>
-#<div class="star-rating star-rating--inline" role="img" 
-# aria-label="Rated 4.85 out of 5"><span style="width:97%">Rated
-#  <strong class="rating">4.85</strong> out of 5</span></div>
-#<a href="https://marvelofficial.com/product/mark-5-iron-man-helmet-1-1-replica/" 
-#class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Mark 5 Iron Man Helmet 1:1 Replica</a>
+for url in urls:
+        productsCategories(url[0])
+        if len(url) > 1:
+            for sub_link in url[1:]:
+                productsCategories(sub_link)
+#printUrls(urls)
+#productSite('https://marvelofficial.com/product/black-panther-airpods-pro-silicon-case-marvel/')
