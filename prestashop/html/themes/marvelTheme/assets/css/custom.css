@@ -221,3 +221,249 @@
   font-weight: bolder;
   letter-spacing: .03em;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* damian */
+
+ #myProductPage{
+  background-color: #ffffff;
+  width: fit-content;
+  margin: auto;
+  padding: 10px;
+}
+
+#myGallery {
+  float: left;
+  width: 40%;
+  box-sizing: border-box;
+  padding-right: 10px;
+}
+#myProductInspector{
+  width: 60%;
+  float: left;
+}
+#myDescriptionReview{
+  clear: both;
+  border-top: 1px solid #ececec;
+  padding: 10px;
+}
+#myRelatedProducts{
+  border-top: 1px solid #ececec;
+  padding: 10px;
+  color: rgb(85, 85, 85);
+}
+
+
+.add-to-cart, .add-to-cart:hover{
+  border: 0px;
+  
+  font-size: .97em;
+  font-weight: bolder;
+  letter-spacing: .03em;
+  
+  text-align: center;
+  text-transform: uppercase;
+
+  background-color: #eb4034;
+  color: #fff;
+  border-radius: 99px;
+  margin: 0;
+}
+
+.add-to-cart:hover{
+  background-color: #bc332a;
+}
+
+.qty.d4 {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  overflow: hidden;
+  width: 100px;
+}
+
+.d4  {
+  background-color: f7f7f7;
+  width: 40px;
+  text-align: center;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+.product-prices > *{
+  margin-bottom: 0 !important;
+}
+
+.product-price{
+  color: #111111;
+  font-family: Lato, sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.product-discount, .product-price{
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+  font-size: 1.5em;
+  line-height: normal;
+}
+
+.has-discount.product-price{
+  color: #bc332a;
+}
+
+.woocommerce-Price-currencySymbol {
+  display: inline-block;
+  font-size: .75em;
+  vertical-align: top;
+}
+
+.image-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.icon-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 999px;
+  border: 2px solid silver;
+  color: silver;
+  padding: 0;
+}
+
+.icon-overlay:hover {
+  background-color: #446084;
+  color: white;
+  border: 2px solid transparent;
+}
+
+.icon-overlay::before {
+  content: '⤢';
+  display: block;
+  font-weight: 700;
+  margin: 0;
+  font-size: 2em;
+  cursor: pointer;
+  line-height: 1.1em;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.image-container:hover img{
+  transform: scale(2);
+}
+
+.product-cover img{
+  cursor: pointer;
+}
+
+
+
+
+/* thumbnails */
+.thumb-wraper{
+  display: inline-block;
+  overflow: hidden;
+  height: fit-content;
+  border: 1px solid transparent;
+  cursor: grab;
+}
+.thumb-wraper:hover, .thumb.selected{
+  border: 1px solid rgb(204, 204, 204);
+}
+
+.thumb {
+  position: relative;
+  transition: transform 600ms, opacity 600ms;
+  opacity: 0.5;
+  scale: 1.2;
+}
+
+.thumb:hover, .thumb.selected {
+  transform: translateY(-5px);
+  opacity: 1 !important;
+}
+
+
+/* lightbox */
+.pswp__bg {
+  background: rgba(0, 0, 0, 0.4) !important; 
+}
+
+/* tabs */
+.nav-tabs > .nav-item > a{
+  padding: 5px 10px !important;
+  border: 2px transparent solid !important;
+  border-radius: 999px;
+  color: #7d7d7d !important;
+  text-transform: uppercase;
+  font-size: 12.8px;
+  letter-spacing: 0.256px;
+  box-sizing: border-box;
+}
+
+.nav-tabs > .nav-item > a:hover{
+  color: #353535 !important;
+}
+
+.nav-tabs > .nav-item > a.active:hover{
+  color: #446084 !important;
+}
+
+.nav-tabs > .nav-item > .active{
+  color: #446084 !important;
+  border-color: #446084 !important;
+}
+
+.nav-tabs{
+  border-bottom: 0px !important;
+}
+
+.tabs{
+  padding: 20px 0;
+  margin-top: 0px;
+}
+
