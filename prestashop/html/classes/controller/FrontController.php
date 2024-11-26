@@ -463,6 +463,7 @@ class FrontControllerCore extends Controller
         }
 
         $this->context->cart->checkAndUpdateAddresses();
+        $this->context->smarty->assign('themeAssets', _THEME_DIR_ . 'assets/');
 
         $this->context->smarty->assign('request_uri', Tools::safeOutput(urldecode($_SERVER['REQUEST_URI'])));
 

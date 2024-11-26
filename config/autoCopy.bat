@@ -4,7 +4,7 @@ docker-compose up -d
 
 docker exec prestashop mkdir /tmp/project-prestashop
 
-docker cp ./prestashop/html prestashop:/tmp/project-prestashop
+docker cp ../prestashop/html prestashop:/tmp/project-prestashop
 
 
 
