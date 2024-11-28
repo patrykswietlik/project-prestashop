@@ -1,0 +1,109 @@
+/**
+ * Copyright since 2007 PrestaShop SA and Contributors
+ * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License version 3.0
+ * that is bundled with this package in the file LICENSE.md.
+ * It is also available through the world-wide-web at this URL:
+ * https://opensource.org/licenses/AFL-3.0
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@prestashop.com so we can send you a copy immediately.
+ *
+ * @author    PrestaShop SA and Contributors <contact@prestashop.com>
+ * @copyright Since 2007 PrestaShop SA and Contributors
+ * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License version 3.0
+ */
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+    z-index: 999999 !important;
+
+}
+
+.loading-wheel {
+    width: 20px;
+    height: 20px;
+    margin-top: -40px;
+    margin-left: -40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-width: 30px;
+    border-radius: 50%;
+    -webkit-animation: spin 1s linear infinite;
+    z-index: 999999 !important;
+}
+
+.sumup_loading .loading-wheel {
+    border-style: double;
+    border-color: #ccc transparent;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(-360deg);
+    }
+}
+
+.sumup-module-wrap {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: fixed;
+    visibility: hidden;
+    z-index: 998 !important;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.sumup-content {
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    position: absolute;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    z-index: 999 !important;
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 460px) {
+    .sumup-content {
+        width: 90%;
+    }
+}
+
+.sumup-module-wrap .close-sumup-content {
+    float: right;
+    width: 1.5rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+    z-index: 999 !important;
+    line-height: 1.5rem;
+    text-align: center;
+}
+
+.sumup-module-wrap .close-sumup-content {
+    cursor: pointer;
+}
+
+.show-sumup-modal {
+    opacity: 1;
+    visibility: visible;
+}

@@ -1,0 +1,625 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url("../fonts/fontawesome-webfont.eot?v=1.0");
+    src: url("../fonts/fontawesome-webfont.eot?#iefix&v=1.0") format("embedded-opentype"),
+    url("../fonts/fontawesome-webfont.woff?v=1.0") format("woff"),
+    url("../fonts/fontawesome-webfont.ttf?v=1.0") format("truetype"),
+    url("../fonts/fontawesome-webfont.svg?v=1.0#fontawesomeregular") format("svg");
+    font-weight: normal;
+    font-style: normal
+}
+
+.p24-small-text {
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+img.p24-svg-image-limited {
+    width: 40em;
+    height: 5em;
+}
+
+.bank-box {
+    float: left;
+    width: 135px;
+    height: 71px;
+    margin-left: 4px;
+    margin-top: 5px;
+    padding: 0px 0;
+    text-align: center;
+    border: 1px solid #eee;
+    cursor: pointer;
+    cursor: hand;
+    background: white;
+}
+
+.bank-logo {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 120px 35px;
+    width: 137px;
+    height: 50px;
+    font-size: 9px;
+}
+
+.bank-name {
+    color: gray;
+    height: 30px;
+    font-size: 9px;
+}
+
+.bank-extra {
+    position: absolute;
+    top: 0;
+    background-color: rgba(100%, 100%, 100%, .5);
+    color: black;
+    text-shadow: white 0 0 3px, white 0 0 5px;
+    font-size: 9px;
+}
+
+.bank-box:hover {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.27);
+    text-decoration: none !important;
+}
+
+.p24-payment-return-page .pay-method-graphics {
+    width: 100%;
+    display: inline-block;
+}
+
+.p24-payment-return-page .bank-box {
+    position: relative;
+}
+
+.p24-payment-return-page a.bank-box.selected:before {
+    font-family: 'FontAwesome', serif;
+    content: "\f00c";
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #db2032;
+    z-index: 9;
+    margin: -8px -8px 0 0;
+}
+
+.p24-payment-return-page a.bank-box.inactive {
+    opacity: 0.5;
+    -webkit-filter: grayscale(1);
+    -moz-filter: grayscale(1);
+    -ms-filter: grayscale(1);
+    -o-filter: grayscale(1);
+    filter: grayscale(1);
+}
+
+.p24-payment-return-page ul.pay-method-text-list {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+}
+
+.p24-payment-return-page .pay-method-text-list li {
+    min-width: 180px;
+    width: 24.99%;
+    float: left;
+}
+
+.p24-payment-return-page .pay-method-text-list .bank-box {
+    width: auto;
+    height: auto;
+    margin: 0 5px 0 0;
+}
+
+.p24-text-center {
+    text-align: center;
+}
+
+.p24-stuff {
+    display: block;
+    min-height: 20px;
+    text-align: center;
+    margin: 10px auto;
+    position: relative;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.p24-stuff:before, .p24-stuff:after {
+    font-family: 'FontAwesome', serif;
+    content: "\f078";
+    position: absolute;
+    top: 0;
+    right: -18px;
+    bottom: 0;
+    font-size: 14px;
+    z-index: 9;
+    margin: 0;
+}
+
+.p24-stuff.p24-less-stuff:before, .p24-stuff.p24-less-stuff:after {
+    content: "\f077";
+}
+
+.p24-stuff:after {
+    right: auto;
+    left: -18px;
+}
+
+.p24-stuff.p24-less-stuff {
+    display: none;
+}
+
+.p24-stuff-nav {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 40px;
+}
+
+.bank-box.recurring .bank-logo {
+    padding-top: 23px;
+    background: transparent url("/modules/przelewy24/views/img/cc_empty.png") center 2px no-repeat;
+}
+
+.p24-recurring {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.p24-ccbox {
+    border-radius: 4px;
+    background: #fff;
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.row.p24-account-cards {
+    padding-top: 20px;
+}
+
+.p24-account-card-form {
+    margin-top: 30px;
+}
+
+.p24-account-bottom-nav {
+    margin-bottom: 25px;
+}
+
+.p24-loader-bg {
+    display: none;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 98;
+    background: #222;
+    opacity: 0.3;
+    filter: alpha(opacity=30); /* For IE8 and earlier */
+}
+
+.p24-loader {
+    display: none;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    animation: p24_spin 1.5s linear infinite;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.p24-card-loader {
+    display: none;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    animation: p24_spin 1.5s linear infinite;
+    margin: auto;
+}
+
+body#checkout section.checkout-step .payment-options #P24FormContainer label {
+    display: inline-block;
+}
+
+body#checkout section.checkout-step .payment-options #P24FormContainer button[type="submit"] {
+    margin-left: 5em;
+}
+
+@keyframes p24_spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.p24-register-card-wrapper, .p24-register-card-row {
+    position: relative;
+    min-height: 55px;
+}
+
+.p24-register-card-row form {
+    padding: 8px;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.p24-register-card-form {
+    display: none;
+}
+
+.p24-register-card-row form label {
+    width: 100%;
+    text-align: left;
+}
+
+#P24_expMonth {
+    margin-right: 5px;
+}
+
+#P24_expYear {
+    margin-left: 5px;
+}
+
+.p24-register-card-row form #P24_cardCVV, #P24_expMonth, #P24_expYear {
+    max-width: 71px;
+    display: inline-block;
+}
+
+.P24_input_error {
+    border: 1px solid red;
+}
+
+#blikCodeError, #wrongBlikCode {
+    display: none;
+}
+
+#blikAliasError, #declinedAlias {
+    display: none;
+    font-weight: bold;
+}
+
+input#blikCode {
+    width: 200px;
+    margin-bottom: 5px;
+}
+
+.p24-text-error {
+    color: red;
+}
+
+#P24FormAreaHolder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+}
+
+#P24FormArea {
+    border-radius: 0;
+    background: #ffffff;
+    padding: 1.5em;
+    margin-bottom: 0.5em;
+    position: relative;
+}
+
+@media screen and (min-width: 992px) {
+    #P24FormArea {
+        float: right;
+    }
+}
+
+#P24_cardHolder, #P24_cardNumber {
+    padding-left: 0.3em;
+}
+
+#P24FormAreaHolder > #P24FormArea.popup {
+    float: none;
+    box-shadow: 0 0 40px #000;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -175px;
+    z-index: 200;
+}
+
+#P24FormContainer {
+    padding-top: 2em;
+    background: url(../img/logo_small.png) no-repeat right 10px top;
+    background-size: 80px;
+}
+
+#P24FormContainer a {
+    border-top: 1px solid #a9a8a8;
+    padding-top: 1.5em;
+    display: block;
+    color: #000000;
+    -webkit-transition: color 0.25s;
+    -moz-transition: color 0.25s;
+    -ms-transition: color 0.25s;
+    -o-transition: color 0.25s;
+    transition: color 0.25s;
+}
+
+#P24FormContainer a:hover,
+#P24FormContainer a:active,
+#P24FormContainer a:focus {
+    color: #a9a8a8;
+    text-decoration: none;
+}
+
+#P24FormContainer #register-text {
+    cursor: pointer;
+    margin-top: 3px !important;
+}
+
+#P24FormContainer #P24_registerCard {
+    height: 15px;
+    width: 15px !important;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+#P24FormContainer form .loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000000;
+    background: #ffffff url('/modules/przelewy24/views/img/loader.gif');
+}
+
+#p24-card-alert {
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    right: 30%;
+}
+
+#P24FormContainer form button:hover {
+    color: #fff;
+    background-color: #2592a9;
+    border-color: transparent;
+}
+
+#P24FormContainer form label {
+    text-align: left;
+    margin-bottom: 0;
+    width: 44%;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: .700rem;
+    vertical-align: middle;
+    cursor: auto;
+}
+
+#P24FormContainer p input.P24_input_error {
+    border: 1px dashed #f03737;
+}
+
+#p24-card-loader {
+    width: 150px;
+    height: 150px;
+    background: #ffffff url('/modules/przelewy24/views/img/loader.gif') no-repeat center center;
+    float: none;
+    box-shadow: 0 0 40px #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -75px 0 0 -75px;
+    z-index: 100;
+}
+
+#P24_cardNumber,
+#P24_cardHolder {
+    max-width: 200px;
+}
+
+#P24_cardCVV {
+    max-width: 73px;
+}
+
+#P24FormContainer form p:not(:last-of-type) {
+    margin-bottom: 10px;
+}
+
+#P24FormContainer form p:last-of-type {
+    margin-bottom: 0;
+}
+
+#P24FormContainer form p.italic {
+    color: #000000;
+    font-style: italic;
+    margin-bottom: 1.5em !important;
+    padding-left: 0 !important;
+    font-size: 1rem;
+    font-weight: 700;
+    border-bottom: 1px solid #a9a8a8;
+    padding-bottom: 1.5em;
+}
+
+#P24FormContainer form input {
+    padding-left: 10px;
+    padding-right: 20px;
+    color: #555555;
+    width: 56%;
+    font-size: 0.750rem;
+    background: #ffffff;
+    border: 1px dashed #afafaf;
+}
+
+#P24FormContainer form input:focus {
+    box-shadow: 0 0 5px #000;
+    border: 1px dashed transparent;
+}
+
+#P24FormContainer label {
+    cursor: none;
+}
+
+#P24FormContainer input {
+    border: none;
+    height: 23px;
+}
+
+#P24FormArea span.info {
+    margin: 3em 0;
+    display: block;
+    text-align: center;
+}
+
+#uniform-p24_regulation_accept {
+    display: inline-block;
+}
+
+#przelewy24lastmethod_img.inactive, a.bank-box.inactive {
+    opacity: 0.5;
+    -webkit-filter: grayscale(1);
+    -moz-filter: grayscale(1);
+    -ms-filter: grayscale(1);
+    -o-filter: grayscale(1);
+    filter: grayscale(1);
+}
+
+.przelewy-24 label {
+    cursor: pointer;
+}
+
+a.bank-box.selected:before {
+    font-family: FontAwesome, serif;
+    content: "\f00c";
+    float: right;
+    font-size: 4em;
+    color: #db2032;
+    margin: -8px -8px 0 0;
+}
+
+.payMethodList li {
+    display: inline-block;
+    width: 20em;
+}
+
+.bank-box.recurring .bank-logo {
+    padding-top: 23px;
+    background: transparent url(/modules/przelewy24/views/img/cc_empty.png) center 2px no-repeat;
+}
+
+.bank-box.recurring .bank-logo > span {
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.bank-box.recurring .bank-logo-visa, .bank-box.recurring .bank-logo-93d207a5540aa38f404ae593385a7b64 { /* VISA */
+    background: transparent url(/modules/przelewy24/views/img/cc_visa.png) center 2px no-repeat;
+}
+
+.bank-box.recurring .bank-logo-ecmc, .bank-box.recurring .bank-logo-b05c23fab98df11c755ba516f5df83c0 { /* ECMC */
+    background: transparent url(/modules/przelewy24/views/img/cc_mastercard.png) center 2px no-repeat;
+}
+
+.bank-box.recurring .bank-logo-maestro, .bank-box.recurring .bank-logo-b4d6cac88f89a1862d9068f831eef183 { /* Maestro-Intl.*/
+    background: transparent url(/modules/przelewy24/views/img/cc_maestro.png) center 2px no-repeat;
+}
+
+.bank-box.recurring .bank-logo-dc, .bank-box.recurring .bank-logo-8cf5364c4259be0f1a5010e052991c0e { /* Diners Club  */
+    background: transparent url(/modules/przelewy24/views/img/cc_dinersclub.png) center 2px no-repeat;
+}
+
+.moreStuff, .lessStuff {
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 2em;
+    cursor: pointer;
+}
+
+.moreStuff:hover, .lessStuff:hover {
+    border-color: #bbb;
+}
+
+.moreStuff:hover:before, .lessStuff:hover:before {
+    border-color: #bbb;
+    background: #bbb;
+}
+
+.moreStuff:before, .lessStuff:before {
+    font-family: FontAwesome, serif;
+    text-align: center;
+    color: #fff;
+    border: 2px solid #ccc;
+    padding: 0.1em;
+    border-radius: 3px;
+    position: relative;
+    top: 12px;
+    cursor: pointer;
+    background: #ccc;
+}
+
+#wrongBlikCode, #invalidBlikCode {
+    display: none;
+}
+
+#expiredAlias {
+    display: none;
+    font-weight: bold;
+}
+
+input#blikCode {
+    width: 200px;
+    margin-bottom: 5px;
+}
+
+#blikAliasAlternativeKeys {
+    display: none;
+}
+
+#blikAliasAlternativeKeys div:first-of-type {
+    margin-top: 15px;
+}
+#blikAliasAlternativeKeys div {
+    margin-left: 25px;
+}
+
+.payment-options .bank-logo {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.p24-choose{
+    text-align: center;
+    font-size: 1.5em;
+    margin: 2em 0 1em;
+    color: black;
+    font-weight: 600;
+}
+
+.p24-payment-return-page{
+    text-align:center;
+}
+
+/* Hacks for icons */
+.payment-option label[for|=payment-option] img[src*=przelewy24][src*=svg] {
+    width: 120px;
+    height: 2em;
+}

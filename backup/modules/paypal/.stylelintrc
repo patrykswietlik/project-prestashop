@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "stylelint-config-twbs-bootstrap/scss"
+  ],
+  "rules": {
+    "property-blacklist": [
+      "border-radius",
+      "border-top-left-radius",
+      "border-top-right-radius",
+      "border-bottom-right-radius",
+      "border-bottom-left-radius",
+      "transition"
+    ],
+    "block-opening-brace-space-before": "always",
+    "indentation": 2,
+    "declaration-colon-newline-after": "always-multi-line"
+  }
+}

@@ -1,0 +1,498 @@
+.img-preview {
+    margin: 10px 0
+}
+
+.error {
+    color: red
+}
+
+p.payment_module a.payu {
+    background: #fbfbfb none;
+    padding: 33px 40px 34px 15px;
+    font-weight: bold;
+}
+
+p.payment_module a.payu_card {
+    background: url('../img/card-visa-mc.svg') 15px 33px no-repeat #fbfbfb;
+}
+
+p.payment_module a.payu_card {
+    padding: 33px 40px 34px 120px;
+}
+
+p.payment_module a.payu_blik {
+    background: url('../img/blik.svg') 15px 33px no-repeat #fbfbfb;
+}
+
+p.payment_module a.payu_blik {
+    padding: 33px 40px 34px 80px;
+}
+
+p.payment_module a.payu_main {
+    background: url('../img/logo-payu.svg') 15px 33px no-repeat #fbfbfb;
+}
+
+p.payment_module a.payu_main {
+    padding: 33px 40px 34px 75px;
+}
+
+p.payment_module a.payu_klarna {
+    background: url('../img/payu_later_klarna_logo.svg') 15px 33px no-repeat #fbfbfb;
+}
+
+p.payment_module a.payu_klarna {
+    padding: 33px 40px 34px 90px;
+}
+
+p.payment_module a.payu_paypo {
+    background: url('../img/payu_later_paypo_logo.svg') 15px 33px no-repeat #fbfbfb;
+}
+
+p.payment_module a.payu_paypo {
+    padding: 33px 40px 34px 115px;
+}
+
+p.payment_module a.payu_twisto {
+    background: url('../img/payu_later_twisto_logo.svg') 15px 33px no-repeat #fbfbfb;
+}
+
+p.payment_module a.payu_twisto {
+    padding: 33px 40px 34px 110px;
+}
+
+p.payment_module a.payu_installment {
+    background: url('../img/payu_installment.svg') 15px 33px no-repeat #fbfbfb;
+}
+
+p.payment_module a.payu_installment {
+    padding: 33px 40px 34px 120px;
+}
+
+
+p.payment_module a.payu:after, .payu-payment-credit-tile:after {
+    display: block;
+    content: "\f054";
+    position: absolute;
+    right: 15px;
+    margin-top: -11px;
+    top: 50%;
+    font-family: "FontAwesome";
+    font-size: 25px;
+    height: 22px;
+    width: 14px;
+    color: #777777;
+}
+
+p.payment_module a.payu:hover {
+    background-color: #f6f6f6;
+}
+
+.img-preview img {
+    max-width: 680px;
+}
+
+#payuAmountInfo {
+    float: left;
+}
+
+#payuLogo {
+    float: right;
+}
+
+#payMethods {
+    clear: both;
+    overflow: auto;
+    margin-top: 20px;
+}
+
+
+
+
+.pay-methods {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.pay-methods__item {
+    padding: 6px 6px;
+    width: 112px;
+}
+
+.pay-methods__item-inner {
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    background-color: #ffffff;
+    transition: all 250ms;
+}
+
+.payMethodActive .pay-methods__item-inner {
+    border-color: #438F29;
+    transition: all 250ms;
+}
+
+.pay-methods__item:hover .pay-methods__item-inner {
+    background-color: #f9f9f9;
+    transition: all 250ms;
+}
+
+.pay-methods__img {
+    width: 100%;
+    height: 37px;
+    display: block;
+    object-fit: contain;
+    max-height: 1.618em;
+}
+
+.pay-methods__label {
+    font-size: inherit !important;
+    padding: 14px 5px !important;
+    display: flex !important;
+    justify-content: center  !important;
+    align-items: center !important;
+}
+
+.pay-methods__hide {
+    display: none;
+}
+
+.payuConditions {
+    font-size: 12px;
+    line-height: 120%;
+    margin-bottom: 24px;
+    color: #6d6d6d;
+}
+
+.payu-terms-of-service {
+    margin: 8px 0;
+    display: block;
+}
+
+
+#payMethods .payMethod {
+    float: left;
+    overflow: hidden;
+    text-align: center;
+    margin: 3px;
+    height: 88px;
+    width: 140px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    background-color: #ffffff;
+}
+
+#payMethods .payMethodEnable:hover {
+    background-color: #f9f9f9;
+}
+
+#payMethods .payMethodActive {
+    border-color: #438F29;
+    background-color: #eeeeee;
+}
+
+.payMethod input[type="radio"] {
+    display: none;
+}
+
+.payMethod label {
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 120%;
+    padding: 0;
+    margin: 0 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+.payMethodEnable label {
+    cursor: pointer;
+}
+
+.payMethodImage {
+    width: 120px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    margin: 7px auto;
+}
+
+.payMethodImage img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+
+
+.payuConditions {
+    margin: 20px 0;
+    font-size: 10px;
+}
+
+.payuConditions label {
+    font-size: 13px;
+}
+
+.payuConditions label a {
+    font-weight: bold;
+}
+
+p.payment_module_17 {
+    padding: 0;
+    margin: 0;
+}
+
+p.payment_module_17 a.payu {
+    display: block;
+}
+
+p.payment_module_17 a.payu img {
+    margin-right: 10px;
+    height: 70px;
+    vertical-align: middle;
+}
+
+.payu-installment-price-listing {
+    font-size: 12px;
+}
+
+.payu-installment-price-listing > p {
+    font-size: 12px;
+    display: inline-block;
+}
+
+.payu-pay-image-16 {
+    width: 50px;
+    height: 25px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+p.payment_module a.payu-payment-credit-tile {
+    padding: 33px;
+    background: #fbfbfb none;
+}
+
+.payu-widget-installments-mini, .payu-installment-cart-summary, .payu-widget-installments-mini-amount {
+    font-size: 14px;
+}
+
+.payu-widget-installments-mini-separator {
+    color: #777777;
+}
+
+.payu-installment-cart-summary {
+    margin-left: 20px;
+}
+
+.payu-separator-reset {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.payu-installment-panel {
+    padding-bottom: 1.25em;
+}
+
+.payu-script-tag {
+    display: none !important;
+}
+
+p.payment_module a.payu-widget-installments-mini {
+    display: inline;
+    border: 0px;
+    padding: 0px;
+}
+
+.payment_module_content--show {
+    display: block !important;
+}
+
+.payment_open {
+    cursor: pointer;
+}
+
+.payment-name {
+    display: none;
+}
+
+body#checkout #payu-methods-grouped .additional-information {
+    margin:0;
+}
+
+.payu-method-description {
+    margin-top: 1.25rem;
+}
+
+.payu-method-description > p:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.payu-checkout-installment {
+    margin-bottom: -10px;
+}
+
+.payu-card-form-container {
+    width: 380px;
+    margin: 5px auto 15px;
+}
+
+.payu-card-container {
+    width: 100%;
+    margin: 0 auto;
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 15px 10px;
+    border: 1px solid #428f29;
+    background: rgba(66, 143, 41, 1);
+    background: linear-gradient(135deg, rgba(53, 112, 33, 1) 0%, rgba(66, 143, 41, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#357021', endColorstr='#428f29', GradientType=1);
+}
+
+.payu-card-container div.aside {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.wb-16{
+    background-color: #d9edf7;
+    color: #31708f;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0;
+}
+.payuConditions .checkbox{
+    display: none;
+}
+.payu-card-form {
+    margin: 0 auto 0 auto;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.card-details .expiration {
+    width: 50%;
+    float: left;
+}
+.card-details .cvv {
+    width: 45%;
+    float: right;
+}
+.payu-card-clearfix:before, .payu-card-clearfix:after {
+    content: "";
+    display: table;
+}
+
+.payu-card-clearfix:after { clear: both; }
+
+.payu-card-clearfix {
+    margin-top: 10px;
+}
+
+.payu-card-legend-container {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    overflow: auto
+}
+.payu-card-legend-container > div {
+    float: left;
+}
+.payu-card-legend-container > .payu-card-legend-number {
+    width: 220px;
+    margin-left: 45px
+}
+.payu-card-legend-container > .payu-card-legend-valid {
+    width: 85px
+}
+#secure-form {
+    background-color: #F4F9F9;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.payu-read-more {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.payu-more-hidden {
+    display: none;
+}
+
+@media only screen and (max-width: 460px) {
+    .payu-installment-cart-summary {
+        display: block;
+        margin-left: 0px;
+        margin-top: 5px;
+    }
+
+    .payu-card-form-container {
+        width: 100%;
+        margin: 5px auto 15px;
+    }
+}
+
+#_form-payu{
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+#_form-payu legend{
+    margin-bottom: 20px;
+}
+#_form-payu .form-group{
+    display: none;
+}
+.repay-action{
+    border: 0;
+    border-radius: 5px;
+}
+.accept-payment{
+    background: #a6c307;
+    color: #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+.discard-payment{
+    background: red;
+    color: #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+.repayment-options input[type="submit"]{
+    background: #a6c307;
+    color: #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+}
+#payuForm #payMethods > div{
+    position: relative;
+    overflow: hidden;
+}
+#payuForm #payMethods > div label{
+    position: relative;
+    z-index: 1;
+}
+
+#payuForm > div input:checked + label::before{
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    background: #ddd;
+    position: absolute;
+    top: 0;
+    left: -10vw;
+    z-index: -1;
+}
+
+.repayment-options .additional-information{
+    display: none;
+}

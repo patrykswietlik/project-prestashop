@@ -1,0 +1,76 @@
+/*!
+ * Since 2007 PayPal
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@prestashop.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ *  versions in the future. If you wish to customize PrestaShop for your
+ *  needs please refer to http://www.prestashop.com for more information.
+ *
+ *  @author Since 2007 PayPal
+ *  @author 202 ecommerce <tech@202-ecommerce.com>
+ *  @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ *  @copyright PayPal
+ *
+ *//*!
+ * Since 2007 PayPal
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@prestashop.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ *  versions in the future. If you wish to customize PrestaShop for your
+ *  needs please refer to http://www.prestashop.com for more information.
+ *
+ *  @author Since 2007 PayPal
+ *  @author 202 ecommerce <tech@202-ecommerce.com>
+ *  @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ *  @copyright PayPal
+ *
+ */.paypal-loader{border:16px solid #f3f3f3;border-top:16px solid #3498db;border-radius:50%;width:25px;height:25px;-webkit-animation:spin 2s linear infinite;animation:spin 2s linear infinite}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.paypal-loader-container{position:absolute;top:0;left:0;right:0;height:100%;background:#fff}/*!
+ * Since 2007 PayPal
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@prestashop.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ *  versions in the future. If you wish to customize PrestaShop for your
+ *  needs please refer to http://www.prestashop.com for more information.
+ *
+ *  @author Since 2007 PayPal
+ *  @author 202 ecommerce <tech@202-ecommerce.com>
+ *  @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ *  @copyright PayPal
+ *
+ */.pp__flex{display:-webkit-box !important;display:-webkit-flex !important;display:-ms-flexbox !important;display:flex !important}.pp__align-items-center{-webkit-box-align:center !important;-webkit-align-items:center !important;-ms-flex-align:center !important;align-items:center !important}.pp__justify-content-center{-webkit-box-pack:center !important;-webkit-justify-content:center !important;-ms-flex-pack:center !important;justify-content:center !important}.pp__hidden{display:none}.pp__d-table-cell{display:table-cell}.pp__position-relative{position:relative}.pp__position-absolute{position:relative}.pp__flex_direction_column{-webkit-box-orient:vertical !important;-webkit-box-direction:normal !important;-webkit-flex-direction:column !important;-ms-flex-direction:column !important;flex-direction:column !important}.pp__justify-content-between{-webkit-box-pack:justify !important;-webkit-justify-content:space-between !important;-ms-flex-pack:justify !important;justify-content:space-between !important}.pp__flex_direction_column{-webkit-box-orient:vertical !important;-webkit-box-direction:normal !important;-webkit-flex-direction:column !important;-ms-flex-direction:column !important;flex-direction:column !important}.pp__justify-content-between{-webkit-box-pack:justify !important;-webkit-justify-content:space-between !important;-ms-flex-pack:justify !important;justify-content:space-between !important}.pp__flex-item-1{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1}.pp__flex-item-2{-webkit-box-flex:2;-webkit-flex:2;-ms-flex:2;flex:2}.pp__flex-item-3{-webkit-box-flex:3;-webkit-flex:3;-ms-flex:3;flex:3}.pp__flex-item-4{-webkit-box-flex:4;-webkit-flex:4;-ms-flex:4;flex:4}.pp__flex-item-5{-webkit-box-flex:5;-webkit-flex:5;-ms-flex:5;flex:5}.pp-info .item{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;font-size:14px}.pp-info .item .header{font-weight:700}.pp-info .item .desc{text-align:center;line-height:1.3;width:100%}#index [paypal-messaging-banner],#category [paypal-messaging-banner]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center}@media only screen and (min-width: 992px){body.pp-popover .popover{max-width:500px}}@media only screen and (max-width: 991px){.popover.bs-tether-element-attached-top{left:-95px !important;width:276px;top:13px !important}.popover.bs-tether-element-attached-top::before,.popover.bs-tether-element-attached-top::after{left:85%}}
+
+
+/*# sourceMappingURL=paypal_fo.css.map*/

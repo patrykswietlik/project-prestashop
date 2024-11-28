@@ -1,0 +1,52 @@
+
+.bank-box.ui-sortable-helper {
+    transform: rotate(6deg);
+    box-shadow: 8px 8px 8px lightgray;
+}
+
+.draggable-list {
+    list-style: none;
+    margin: 0;
+    display: inline-block;
+    min-height: 106px;
+    border: 2px dashed lightgray;
+    border-radius: 4px;
+    position: relative;
+    padding: 8px 8px 18px 8px;
+}
+
+.bank-box {
+    border-radius: 4px;
+}
+
+.p24-sortable-contener .ui-state-highlight {
+    background-color: #FFF;
+    border: 1px dotted #ddd;
+    cursor: move;
+    display: inline-block;
+    font-weight: bold;
+    color: #CC0033;
+    float: left;
+    width: 135px;
+    height: 71px;
+    margin-left: 4px;
+    margin-top: 5px;
+    padding: 0;
+
+}
+
+.draggable-list p.p24-hint {
+    text-align: center;
+    color: #888;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+}
+
+.p24-container > p {
+    margin-top: 25px;
+    float: left;
+    width: 100%;
+}
