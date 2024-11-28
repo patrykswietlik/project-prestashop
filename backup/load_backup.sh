@@ -1,12 +1,12 @@
 #!/bin/bash
 
-DB_CONTAINER="prestashop-db-bk"
-PRESTASHOP_CONTAINER="prestashop-bk"
+DB_CONTAINER="prestashop-db"
+PRESTASHOP_CONTAINER="prestashop"
 BACKUP_FILE="prestashop_db_backup.sql"
 THEMES_FOLDER="themes"
 IMG_FOLDER="img"
 MODULES_FOLDER="modules"
-SOURCE_FOLDER="./backup"
+SOURCE_FOLDER="."
 
 if [ ! -f "$SOURCE_FOLDER/$BACKUP_FILE" ]; then
     echo "Error: Database backup file $SOURCE_FOLDER/$BACKUP_FILE does not exist!" >&2
