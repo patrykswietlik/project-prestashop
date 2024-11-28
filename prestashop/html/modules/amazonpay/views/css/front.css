@@ -1,0 +1,75 @@
+/**
+* 2007-2023 patworx.de
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade AmazonPay to newer
+* versions in the future. If you wish to customize PrestaShop for your
+* needs please refer to http://www.prestashop.com for more information.
+*
+*  @author    patworx multimedia GmbH <service@patworx.de>
+*  @copyright 2007-2023 patworx multimedia GmbH
+*  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*/
+
+#amazonpay_payment_button a {
+	padding: 10px;
+	background-color: #FBFBFB;
+}
+
+#amazonpay_payment_button a:hover {
+	background-color: #f6f6f6;
+}
+
+#AmazonPayMiniCart {
+	display: none;
+}
+
+.amazonPayButton {
+	margin-top: 1.3rem;
+	margin-bottom: 1rem;
+}
+
+#amazonpay_payment_button a:after {
+	display: block;
+	content: "\f054";
+	position: absolute;
+	right: 15px;
+	margin-top: -11px;
+	top: 50%;
+	font-family: "FontAwesome";
+	font-size: 25px;
+	height: 22px;
+	width: 14px;
+	color: #777777;
+}
+
+.js-edit-amazon-payment {
+	float: right;
+	margin-right: .125rem;
+}
+
+.amzpayments-header-banner {
+	text-align: center;
+}
+.amzpayments-product-banner img {
+	max-width: 100%;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+.amzpayments-footer-banner {
+	clear: both;
+	display: block;
+}
+.amazonPayShoppingCartFooterButton {
+	display: block;
+	width: 100%;
+	text-align: right;
+	min-height: 75px;
+}
+.amazonPayShoppingCartFooterButton #AmazonPayButton {
+	float: right;
+}
+#onepagecheckoutps_step_three #amazonPayCheckoutEmbedded {
+  display: none;
+}

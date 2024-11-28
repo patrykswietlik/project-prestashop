@@ -1,0 +1,7 @@
+.td_row_pickup_batch {
+    background-color:#e2f3db!important;
+}
+
+.td_row_pickup_batch:hover {
+    background-color: #D7EAD0FF !important;
+}

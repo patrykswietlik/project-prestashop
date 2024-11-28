@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>mbeshipping</name>
+    <displayName><![CDATA[eShip for PrestaShop]]></displayName>
+    <version><![CDATA[2.2.2]]></version>
+    <description><![CDATA[eShip for Prestashop crea automaticamente le spedizioni dei prodotti venduti attraverso il tuo e-commerce, permettendoti di concentrarti sulle questioni strettamente legate alla tua attivit&agrave;]]></description>
+    <author><![CDATA[MBE Worldwide S.p.A.]]></author>
+    <tab><![CDATA[shipping_logistics]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
+</module>

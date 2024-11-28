@@ -1,0 +1,33 @@
+{
+    "name": "prestashop/mbeshipping",
+    "description": "MBE e-Link: il plugin gratuito per la gestione completa delle spedizioni e della logistica del tuo e-commerce",
+    "authors": [
+        {
+            "name": "MBE Worldwide"
+        }
+    ],
+    "require": {
+        "iio/libmergepdf": "^4.0",
+        "dompdf/dompdf": "^1.2",
+        "pclzip/pclzip": "^2.8",
+        "firebase/php-jwt": "^6.4",
+        "paragonie/sodium_compat": "^1.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "PrestaShop\\Module\\Mbeshipping\\": "src/"
+        },
+        "classmap": [
+            "mbeshipping.php",
+            "controllers/"
+        ],
+        "exclude-from-classmap": []
+    },
+    "config": {
+        "preferred-install": "dist",
+        "classmap-authoritative": true,
+        "optimize-autoloader": true,
+        "prepend-autoloader": false
+    },
+    "type": "prestashop-module"
+}

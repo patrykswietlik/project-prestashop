@@ -1,0 +1,263 @@
+/**
+ * 2017-2022 PrestaShop
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@prestashop.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ * versions in the future. If you wish to customize PrestaShop for your
+ * needs please refer to http://www.prestashop.com for more information.
+ *
+ * @author    MBE Worldwide
+ * @copyright 2017-2024 MBE Worldwide
+ * @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * International Registered Trademark & Property of MBE Worldwide
+ */
+
+.gelproximity-app {
+    margin-bottom: 0.85em;
+}
+
+.gelproximity-app--ps17 {
+    padding: 1rem;
+}
+
+.gelproximity-app .form-group {
+    border: none;
+    padding: 0.5em;
+}
+
+.gelproximity-app__selection {
+    display: flex;
+    flex-direction: column;
+}
+
+.gelproximity-app__selection-btn {
+    text-align: center;
+    clear: both;
+    cursor: pointer;
+}
+
+.gelproximity-app__point-details {
+    margin-top: 0.3em;
+    float: left;
+    clear: both;
+}
+
+.gelproximity-app__point-details .description {
+    font-size: 0.8em;
+}
+
+.gelproximity-app__point-details .description b {
+    font-size: 1em;
+}
+
+.gelproximity-app__selection-details {
+    margin-top: 1rem;
+}
+
+.gelproximity-app .form-group .alert-warning {
+    height: 47px;
+    padding: 15px;
+}
+
+.gelproximity-app .hidden {
+    display: none;
+}
+
+#carrier_area .delivery_option.disabled {
+    opacity: 0.5;
+}
+
+.gelproximityshipping-fullscreen {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.gelproximityshipping-overlay {
+    background: #222;
+    opacity: 0.7;
+    z-index: 2147483646;
+}
+
+.gelproximityshipping-map {
+    z-index: 2147483647;
+}
+
+/* PrestaShop 1.5 overrides */
+.gelproximityshipping-ps15 .alert {
+    margin-top: 0.7em;
+    padding: 0.5em 0.7em;
+}
+
+.gelproximityshipping-ps15 .alert-warning {
+    border: 1px solid #fdd531;
+    background-color: lightyellow;
+    color: #666;
+}
+
+.gelproximity-app__order-confirmation.box {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    display: flex;
+    flex-direction: column;
+}
+
+.gelproximity-app__order-confirmation .page-subheading {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0.5em;
+}
+
+.gelproximity-app__point-details,
+.gelproximity-app__point-details dl,
+.gelproximity-app__point-details dl dt,
+.gelproximity-app__point-details dl dd,
+.gelproximity-app__point-details dl dd p {
+    padding: 0;
+    margin: 0;
+}
+
+.gelproximity-app__point-details dl dt {
+    font-weight: 300;
+    font-size: 1.1em;
+}
+
+.gelproximity-app__point-details dl dd {
+    font-size: 1em;
+}
+
+.gelproximityshipping-ps15.adresses_bloc .address_title .page-subheading {
+    font-size: 11px;
+}
+
+@media screen and (min-width: 768px) {
+    .gelproximity-app__selection {
+        flex-direction: row;
+    }
+
+    .gelproximity-app__selection-details {
+        margin-top: 0;
+        margin-left: 1rem;
+    }
+
+    .gelproximity-app__btn {
+        width: auto;
+        text-align: left;
+        clear: none;
+    }
+
+    .gelproximity-app__point-details {
+        clear: none;
+        margin-left: 0.7em;
+        margin-top: 0;
+    }
+
+    .gelproximity-app__point-details .description {
+        font-size: 0.9em;
+    }
+
+    .gelproximity-app__point-details .description b {
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (min-width: 993px) {
+    .gelproximity-app--ps17 {
+        padding: 0;
+    }
+}
+
+#gelproximity-app__selection-button-sdk-wrapper {
+    margin: 10px;
+}
+
+/* SDK Button customizations */
+.gel-redirect-button-style {
+    text-transform: uppercase;
+    background-image: none !important;
+    padding-left: 15px !important;
+}
+
+#gelproximity-app-pick-point-select-button {
+    margin-left: 15px;
+    width: 100%;
+}
+
+table.gelproximity-app__selection-pick-up-point-details-table td {
+    font-size: small;
+    margin: 0;
+    padding: 0;
+}
+
+.gelproximity-app__hidden {
+    display: none;
+}
+
+.gelproximity-app__selection-details-error {
+    color: red;
+    font-weight: bold;
+}
+
+.gelproximity-app--pick-up-point-order-confirmation-details {
+    margin: 5px 0 5px 0;
+}
+
+.gelproximity-app--pick-up-point-order-confirmation-details-logo {
+    width: 96px;
+    height: 96px;
+}
+
+.gelproximity-app__selection-pick-up-point-order-confirmation-details {
+    margin-left: 15px;
+}
+
+.gelproximity-app__selection-pick-up-point-details-table h6 {
+    font-weight: bold;
+}
+
+.gelproximity-app-sandbox-mode-alert {
+    margin: 0 25px 15px 25px;
+}
+
+.gelproximity-app--pick-up-point-details {
+    margin-left: 5px;
+}
+
+@media screen and (max-width: 993px) {
+    #gelproximity-app-pick-point-select-button {
+        width: 90%;
+        margin-right: auto;
+    }
+    .gelproximity-app--pick-up-point-details {
+        margin-left: 15px;
+    }
+}
+
+/* + Checkout plugin: The Checkout */
+.checkout-plugin-thecheckout #gelproximity-app-pick-point-select-button {
+    margin-left: 0;
+}
+.checkout-plugin-thecheckout #gelproximity-app-pick-point-select-button .gelproximity-app__pick-button-text {
+    font-size: 90%;
+}
+.checkout-plugin-thecheckout .gelproximity-app__selection {
+    flex-direction: column;
+}
+/* - Checkout plugin: The Checkout */

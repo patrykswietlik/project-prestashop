@@ -1,0 +1,59 @@
+Changelog
+
+1.1.1
+* Fixed - Error CSV download button
+* Fixed - shipment closure bug
+
+1.1.2
+* Fixed - Directory_Separator php 7
+
+1.1.3
+* Added compatibility php 7
+* Added french translation
+
+1.2.0
+* Added MBE Online Support
+* Added UAP
+
+1.3.0
+* Fixed bug with products units of measure
+* Free thresholds specific to National (domestic) / WW
+* Automatic setting of the "Shipped" status of an order
+* Option to customize the name of the courier / MBE service
+* Default shipping methods mapped to MBE methods
+
+1.3.1
+* Fixed bug with custom label for service S+E
+
+1.4.0
+* Added a new country: Croatia (no translation)
+* Download and Delete log files
+* Print multiple shipping labels
+* Fixed bug with special characters
+* Minor bug fixes
+
+1.5.0
+* Standard Packages management via csv
+
+1.5.1
+* Fix download package and product current file
+
+1.5.2
+* Fix for Csv rates
+
+1.6.0
+* Return shipping management
+* Proforma data management
+* Fixed problem with opening the order from the "MBE Shipping" page for the most recent versions of Prestashop
+
+1.6.1
+* Fixed issue with the value of the shipment in case of items with quantity greater than 1
+
+1.7.0
+* New delivery points service
+
+1.7.1
+* Fixed problem with the delivery point service in case dni is required as mandatory
+
+1.7.2
+* Fixed problem with the delivery point service, address of MDP is setting also like invoice address

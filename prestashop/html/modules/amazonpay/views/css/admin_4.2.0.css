@@ -1,0 +1,131 @@
+/**
+ * 2007-2023 patworx.de
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade AmazonPay to newer
+ * versions in the future. If you wish to customize PrestaShop for your
+ * needs please refer to http://www.prestashop.com for more information.
+ *
+ *  @author    patworx multimedia GmbH <service@patworx.de>
+ *  @copyright 2007-2023 patworx multimedia GmbH
+ *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Don't forget to prefix your containers with your own identifier
+ * to avoid any conflicts with others containers.
+ */
+
+#content .tab-pane:first-child .panel {
+	border-top-left-radius: 0;
+}
+
+.amazonpay-header .text-branded,
+.amazonpay-content .text-branded {
+	color: #00aff0;
+}
+
+.amazonpay-header h4,
+.amazonpay-content h4,
+.amazonpay-content h5 {
+	margin: 2px 0;
+	color: #00aff0;
+	font-size: 1.8em;
+}
+
+.amazonpay-header h4 {
+	margin-top: 5px;
+}
+
+.amazonpay-header .col-md-6 {
+	margin-top: 18px;
+}
+
+.amazonpay-content h4 {
+	margin-bottom: 10px;
+}
+
+.amazonpay-content h5 {
+	font-size: 1.4em;
+	margin-bottom: 10px;
+}
+
+.amazonpay-content h6 {
+	font-size: 1.3em;
+	margin: 1px 0 4px 0;
+}
+
+.amazonpay-header > .col-md-4 {
+	height: 65px;
+	vertical-align: middle;
+	border-left: 1px solid #ddd;
+}
+
+.amazonpay-header > .col-md-4:first-child {
+	border-left: none;
+}
+
+.amazonpay-header #create-account-btn {
+	margin-top: 14px;
+}
+
+.amazonpay-content dd + dt {
+	margin-top: 5px;
+}
+
+.amazonpay-content ul {
+	padding-left: 15px;
+}
+
+.amazonpay-content .ul-spaced li {
+	margin-bottom: 5px;
+}
+
+#troubleshooter_results {
+	margin-top: 25px;
+}
+
+#start_troubleshooter {
+	min-width: 180px;
+	text-align: center;
+	background: #00aff0;
+	color: #fff;
+}
+.innerrow {
+	margin-bottom: 15px;
+}
+.troubleshooter-content-results {
+	margin-top: 15px;
+}
+.troubleshooter_state_0 {
+	font-weight: bold;
+	color: red;
+}
+.troubleshooter_state_1 {
+	font-weight: bold;
+	color: green;
+}
+
+#disableModCats {
+	font-size: .8rem;
+}
+
+.amazonpay_quickcheck ul {
+	list-style-type: none;
+	margin-bottom: 0;
+	padding-left: 0;
+}
+.amazonpay_quickcheck ul li {
+	display: inline-block;
+	margin-right: 8px;
+}
+.amazonpay_quickcheck_status_1 {
+	color: green;
+}
+.amazonpay_quickcheck_status_0 {
+	color: red;
+}
+.amazonpay_quickcheck_status_info {
+	color: #00aeff;
+}

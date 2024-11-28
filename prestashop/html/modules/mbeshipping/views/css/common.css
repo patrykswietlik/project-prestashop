@@ -1,0 +1,561 @@
+/**
+ * 2017-2022 PrestaShop
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@prestashop.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ * versions in the future. If you wish to customize PrestaShop for your
+ * needs please refer to http://www.prestashop.com for more information.
+ *
+ * @author    MBE Worldwide
+ * @copyright 2017-2024 MBE Worldwide
+ * @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * International Registered Trademark & Property of MBE Worldwide
+ */
+
+/* ======================= CONFIGURATION ========================= */
+#mbeshipping_header {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 3px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+#mbeshipping_header .header-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+#mbeshipping_header #header_right {
+    display: flex;
+}
+
+#mbeshipping_header .header-link img {
+    aspect-ratio: 1;
+    width: 24px;
+}
+
+#mbeshipping_header .header-link:hover,
+#mbeshipping_header .header-link:focus,
+#mbeshipping_header .header-link:active {
+    text-decoration: none;
+}
+
+#mbeshipping_conf_content .list-group-item {
+    display: flex;
+    align-items: center;
+}
+
+#mbeshipping_conf_content .icon {
+    aspect-ratio: 1;
+    width: 14px;
+}
+
+#mbeshipping_conf_content .icon-round {
+    border-radius: 50%;
+    aspect-ratio: 1;
+    width: 14px;
+}
+
+#mbeshipping_conf_content .go-to-portal {
+    text-decoration: underline;
+}
+
+#mbeshipping_conf_content #mbe_access_form .form-group,
+#mbeshipping_conf_content #mbe_access_form .form-group.flex {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 !important;
+    width: 48%;
+}
+
+#mbeshipping_conf_content .row {
+    display: flex;
+    justify-content: center;
+}
+
+#mbeshipping_conf_content .row.left {
+    display: flex;
+    justify-content: start;
+}
+
+#mbeshipping_conf_content .row:before,
+#mbeshipping_conf_content .row:after {
+    content: none;
+}
+
+#mbeshipping_conf_content .row.justify-content-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+#mbeshipping_conf_content .buttons {
+    margin-top: 1rem;
+}
+
+#mbeshipping_conf_content .row.column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#mbeshipping_conf_content .buttons + .row {
+    margin: 1rem 0;
+}
+
+.btn + .btn {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1rem;
+}
+
+#mbeshipping_conf_content select {
+    width: 250px !important;
+}
+
+#mbeshipping_conf_content #mbe_checklist .check {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+}
+
+#mbeshipping_conf_content #mbe_checklist .check > * {
+    width: 50%
+}
+
+#mbeshipping_conf_content #mbe_checklist [class^="icon-"] {
+    font-size: 18px;
+}
+
+#mbeshipping_conf_content #mbe_checklist .icon-remove-circle {
+    color: red;
+}
+
+#mbeshipping_conf_content #mbe_checklist .icon-remove-circle.warning {
+    color: orange;
+}
+
+#mbeshipping_conf_content #mbe_checklist .icon-ok-circle {
+    color: limegreen;
+}
+
+#mbeshipping_conf_content .tab-pane#registration {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+#mbeshipping_conf_content .tab-pane#registration .registration-actions {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 1rem;
+}
+
+#mbeshipping_conf_content .tab-pane#registration .registration-actions .material-icons {
+    font-size: 1rem;
+    font-weight: inherit;
+    vertical-align: middle;
+}
+/* ======================= CONFIGURATION ========================= */
+
+/* ======================== MBE STYLING ========================== */
+#mbeshipping_header .header-link {
+    color: #221e1f !important;
+}
+
+#mbeshipping_header .header-link:hover {
+    color: #e2001a !important;
+}
+
+#mbeshipping_header .header-link > img {
+    filter: brightness(0) saturate(100%) invert(7%) sepia(7%) saturate(901%) hue-rotate(295deg) brightness(93%) contrast(88%);
+}
+
+#mbeshipping_header .header-link:hover > img {
+    filter: brightness(0) saturate(100%) invert(24%) sepia(85%) saturate(7230%) hue-rotate(346deg) brightness(84%) contrast(115%);
+}
+
+#mbeshipping_conf_content .panel.mbe {
+    border: none !important;
+    box-shadow: none !important;
+    margin-bottom: 5px !important;
+}
+
+#mbeshipping_conf_content .panel-heading.mbe {
+    background-color: transparent !important;
+    border-bottom: 1px solid #ddd !important;
+}
+
+#mbeshipping_conf_content input:hover {
+    background-color: #f5f5f5 !important;
+}
+
+#mbeshipping_conf_content input:focus {
+    background-color: white;
+    border-color: #e2001a !important;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(226 0 26 / 60%) !important;
+}
+
+#mbeshipping_conf_content select:focus {
+    background-color: white;
+    border-color: #e2001a !important;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(226 0 26 / 60%) !important;
+}
+
+#mbeshipping_conf_content .btn-link {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: #221e1f !important;
+    text-decoration: underline;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+#mbeshipping_conf_content .btn-link:hover {
+    color: #e2001a !important;
+    text-decoration: underline;
+}
+
+#mbeshipping_conf_content .btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#mbeshipping_conf_content [data-toggle="tab"].list-group-item.active {
+    background-color: #e2001a !important;
+    border-color: #e2001a !important;
+}
+
+#mbeshipping_conf_content .btn {
+    text-transform: uppercase !important;
+}
+
+#mbeshipping_conf_content .btn.btn-primary,
+#mbeshipping_conf_content .btn.btn-default {
+    color: white;
+    background-color: #e2001a !important;
+    border-color: #e2001a !important;
+}
+
+#mbeshipping_conf_content .btn.btn-secondary {
+    background-color: #5F5F5F;
+    color: white;
+}
+
+#mbeshipping_conf_content .btn.btn-primary:hover,
+#mbeshipping_conf_content .btn.btn-default:hover {
+    background-color: #cc2c24 !important;
+    border-color: #cc2c24 !important;
+}
+
+#mbeshipping_conf_content .btn.btn-secondary:hover {
+    box-shadow: 0 0 0 999px inset rgba(0,0,0,.1)
+}
+
+#mbeshipping_conf_content .btn.btn-default > i {
+    color: white;
+}
+
+#mbeshipping_conf_content .prestashop-switch input:first-of-type:checked ~ .slide-button {
+    background: #e2001a !important;
+}
+
+#mbeshipping_conf_content #mbe_checklist .spinner {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0;
+    color: #fff !important;
+    background-color: #fff !important;
+    border-style: solid;
+    border-width: 0.1875rem;
+    border-top-color: #bbcdd2 !important;
+    border-right-color: #e2001a !important;
+    border-bottom-color: #e2001a !important;
+    border-left-color: #bbcdd2 !important;
+    border-radius: 2.5rem;
+    outline: none;
+    -webkit-animation: rotating 2s linear infinite;
+    animation: rotating 2s linear infinite
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#mbeshipping_conf_content .tab-description {
+    margin: 0 0 0 -15px;
+}
+
+/* ======================== MBE STYLING ========================== */
+
+/* ======================= WELCOME PAGE ========================== */
+.welcome-page .panel-heading.mbe {
+    margin: -20px -20px -10px -20px !important;
+}
+
+.welcome-page h1,
+.welcome-page h2,
+.welcome-page h4,
+.welcome-page p {
+    color: #1c1819 !important;
+}
+
+.welcome-page .content-wrapper {
+    padding: 0 5rem;
+}
+
+.welcome-page .content-wrapper *:not(h1) {
+    line-height: 1.5em!important;
+}
+
+.welcome-page h4 {
+    line-height: 1.5em!important;
+}
+
+.welcome-page .title {
+    font-weight: 600;
+}
+
+.welcome-page .title.red {
+    color: #e2001a;
+}
+
+.welcome-page .title.dark {
+    color: #221e1f;
+}
+
+.welcome-page .box-container {
+    width: 100%;
+    /*height: 400px;*/
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-row: auto;
+}
+
+.welcome-page .box-container .box {
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 0 -1px -1px 0;
+}
+
+.welcome-page .box.bg-darker {
+    background-color: #eaeaea;
+}
+
+.welcome-page .box:has(p) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.welcome-page .box:has(img) {
+    padding: 0!important;
+}
+
+.welcome-page .box img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.welcome-page .banner-welcome {
+    display: block;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* ======================= WELCOME PAGE ========================== */
+
+/* ========================= UTILITIES =========================== */
+.my-1 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.my-2 {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.mt-1 {
+    margin-top: 1rem !important;
+}
+
+.mt-2 {
+    margin-top: 2rem !important;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.mw-100 {
+    min-width: 100% !important;
+}
+/* ========================= UTILITIES =========================== */
+/* version 2.1.8*/
+#mbeshipping_welcome_page .first_banner_welcome .btn-register {
+    border-radius: 5px !important;
+    background-color: #e2001a;
+    color: #ffffff;
+    font-weight: bold;
+}
+@media (max-width: 480px) {
+    /* mobile */
+    #mbeshipping_welcome_page .first_banner_welcome .btn {
+        padding:15px 30px !important;
+    }
+    #mbeshipping_welcome_page .row {
+        justify-content: center;
+    }
+
+    #mbeshipping_welcome_page .mobile-button{
+        width: 100%;
+    }
+    #mbeshipping_welcome_page .mobile-button {
+        padding-top: 2rem;
+    }
+
+    /*#mbeshipping_welcome_page .second_banner_welcome.row,*/
+    #mbeshipping_welcome_page .rassicuration_container.row {
+        display: block;
+    }
+    #mbeshipping_welcome_page .title_container_features {
+        display: none;
+    }
+
+    #mbeshipping_welcome_page .image_contaiener {
+        margin-top: 20px;
+    }
+    #mbeshipping_welcome_page .text_contaiener {
+        margin-top: 20px;
+    }
+
+    #mbeshipping_welcome_page  .text_contaiener > h4 {
+        margin: 0 !important;
+    }
+    #mbeshipping_welcome_page .rassicuration_container_mobile {
+        padding-bottom: 0.5rem;
+    }
+    #mbeshipping_welcome_page .right_banner {
+        margin-bottom: 40px !important;
+    }
+
+    #mbeshipping_welcome_page .mobile_banner_2.row > div > div.row,
+    #mbeshipping_welcome_page .mobile_banner_2.row{
+        display: block !important;
+    }
+    #mbeshipping_welcome_page .mobile_banner_2 .mobile_banner_2_down {
+        background-color: #eff1f2 !important;
+    }
+    #mbeshipping_welcome_page .mobile_banner_2 .mobile_banner_2_down .row_icon{
+        margin-top: 10px !important;
+    }
+    #mbeshipping_welcome_page .mobile_banner_2 .mobile_banner_2_down h4{
+        min-height: 40px !important;
+    }
+}
+
+#mbeshipping_welcome_page .first_banner_welcome .btn-login {
+    border-radius: 5px !important;
+    background-color: #262626;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#mbeshipping_welcome_page .row {
+    justify-content: left !important;
+}
+
+#mbeshipping_welcome_page .first_banner_welcome .black_left_banner .logo_welcome_first {
+    padding: 3rem 0;
+}
+#mbeshipping_welcome_page .first_banner_welcome .black_left_banner{
+    padding-bottom: 3rem;
+}
+
+#mbeshipping_welcome_page .second_banner_welcome{
+    background-color: #f5f5f5;
+    margin-top: 2rem;
+}
+
+#mbeshipping_welcome_page .rassicuration_container {
+    margin-top: 1rem;
+}
+
+#mbeshipping_welcome_page .text_container h4 {
+    margin-top: 20px;
+}
+#mbeshipping_welcome_page .image_contaiener div {
+    margin: 10px;
+}
+
+#mbeshipping_welcome_page .right_banner {
+    background-color: white;
+}
+
+#mbeshipping_conf_content #mbeshipping_welcome_page  .first_banner_welcome.row {
+    display: block !important;
+	clear: both;
+    overflow: hidden;
+}
+
+#mbeshipping_conf_content #mbeshipping_welcome_page .second_banner_welcome h2.title.title-features {
+    padding-left: 1rem;
+}
+
+#mbeshipping_conf_content #mbeshipping_welcome_page .title_container_features{
+    position: absolute;
+}
+
+@media (min-width: 480px) {
+    /* desktop */
+    #mbeshipping_welcome_page .right_banner {
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+    }
+    #mbeshipping_welcome_page .rassicuration_container {
+        margin-top: 1.7rem;
+        padding-bottom: 6px;
+    }
+
+    #mbeshipping_welcome_page .rassicuration_container.second{
+        padding-left: 3rem;
+    }
+
+    #mbeshipping_welcome_page .image_contaiener{
+        padding-left: 6px !important;
+    }
+}
+
+#initial_login .form-group .input-group {
+    width:100%!important;
+}

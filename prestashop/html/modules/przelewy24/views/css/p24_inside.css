@@ -1,0 +1,101 @@
+#p24-blik-section h1,
+#p24-card-section h1{
+    font-weight: bold;
+    font-size: 2em;
+    text-transform: uppercase;
+    background-color: whitesmoke;
+    color: black;
+    margin: 0;
+    padding: .7em 2em;
+    text-align: center;
+}
+
+#p24-blik-section p,
+#p24-card-section p {
+    text-align: center;
+    margin: 1em;
+}
+
+#p24-card-section form > div {
+    width: 28em;
+    margin: auto;
+}
+
+#p24-card-section label > span {
+    text-align: right;
+    display: inline-block;
+    margin-right: .5em;
+    width: 14em;
+}
+
+#p24-card-section input[type=text] {
+    width: 14em;
+}
+
+#p24-card-section input[type=text].short {
+    width: 4em;
+    margin-right: 10em;
+}
+
+#p24-card-section .for-date-select {
+    text-align: left;
+    width: 13em;
+    display: inline-block;
+}
+
+#p24-blik-section input[name=blik] {
+    border: solid 1px silver;
+    border-radius: .3em;
+    font-family: monospace;
+    font-weight: bold;
+    letter-spacing: .1em;
+    text-align: center;
+    font-size: 3em;
+    width: 7em;
+    padding: .4em 1em;
+}
+
+#p24-blik-section button,
+#p24-card-section #P24FormContainer form button {
+    color: white;
+    background-color: dimgrey;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    padding: .5em 1em;
+    border-style: none;
+    border-radius: 1em;
+}
+#P24FormContainer {
+    max-width: 500px;
+    margin: 0 auto 1.5em;
+}
+#p24-card-section #P24FormContainer form button {
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+#p24-blik-section button:disabled,
+#p24-card-section button:disabled {
+    background-color: lightgrey;
+    cursor: progress;
+}
+
+#p24-blik-section .error,
+#p24-card-section .error {
+    display: none;
+    color: darkred;
+}
+
+#p24-blik-section .error.animate,
+#p24-card-section .error.animate {
+    animation: scale-error 1s ease-in-out 2 alternate;
+}
+
+@keyframes scale-error {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
