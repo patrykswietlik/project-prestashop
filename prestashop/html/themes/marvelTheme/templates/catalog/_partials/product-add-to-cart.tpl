@@ -28,10 +28,11 @@
     {block name='product_quantity'}
       <div class="product-quantity clearfix">
         <div class="qty .d4">
+          <div class="before">-</div>
           <input
             type="number"
             name="qty"
-            id="quantity_wanted"
+            id="my_quantity_wanted"
             inputmode="numeric"
             pattern="[0-9]*"
             {if $product.quantity_wanted}
@@ -44,6 +45,7 @@
             class="input-group d4"
             aria-label="{l s='Quantity' d='Shop.Theme.Actions'}"
           >
+          <div class="after">+</div>
         </div>
 
         <div class="add">
@@ -58,8 +60,6 @@
             {l s='BUY NOW' d='Shop.Theme.Actions'}
           </button>
         </div>
-
-        <!-- {hook h='displayProductActions' product=$product} -->
       </div>
     {/block}
   {/if}

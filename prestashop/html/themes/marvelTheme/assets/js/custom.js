@@ -13,3 +13,17 @@ zoomContainer.addEventListener("mouseleave", () => {
 });
 
 
+
+const addButton = document.querySelector(".qty .after");
+const numberInput = document.querySelector(".qty input");
+addButton.addEventListener("click", (event) => {
+    const max = parseInt(numberInput.max) || Infinity;
+    newValue = (parseInt(numberInput.value) || 0)+1;
+    numberInput.value = Math.min(newValue, max);
+});
+const subButton = document.querySelector(".qty .before");
+subButton.addEventListener("click", (event) => {
+    const min = parseInt(numberInput.min) || 0;
+    newValue = (parseInt(numberInput.value) || 0)-1;
+    numberInput.value = Math.max(newValue, min);
+});
