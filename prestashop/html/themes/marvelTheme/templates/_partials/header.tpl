@@ -9,6 +9,9 @@
         {hook h='displayNav2'}
     </div>
 </div>
+<div>
+    {hook h='displayTop'}
+</div>
 <div class="custom__filter">
     <div class="custom__container">
         <div>
@@ -16,7 +19,7 @@
             <span>Filter</span>
         </div>
         <div>
-            <span>Sort By Popularity</span>
+            <span class="custom__sort_by_popularity">Sort By Popularity</span>
         </div>
     </div>
 </div>

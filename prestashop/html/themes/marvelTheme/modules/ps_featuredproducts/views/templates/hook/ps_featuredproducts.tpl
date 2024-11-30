@@ -22,18 +22,12 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="_desktop_cart">
-  <div class="blockcart cart-preview {if $cart.products_count > 0}active{else}inactive{/if}" data-refresh-url="{$refresh_url}">
-    <div class="header custom__cart">
-      {if $cart.products_count > 0}
-        <a rel="nofollow" style="color: white;" aria-label="{l s='Shopping cart link containing %nbProducts% product(s)' sprintf=['%nbProducts%' => $cart.products_count] d='Shop.Theme.Checkout'}" href="{$cart_url}">
-      {/if}
-        <span class="hidden-sm-down custom__cart_text">{l s='Cart' d='Shop.Theme.Checkout'}</span>
-        <span class="cart-products-count">({$cart.products_count})</span>
-        <i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i>
-      {if $cart.products_count > 0}
-        </a>
-      {/if}
-    </div>
-  </div>
-</div>
+<section class="featured-products clearfix">
+  <h2 class="h2 products-section-title text-uppercase custom__popular">
+    ZANURZ SIĘ W PRODUKTACH MARVELA
+  </h2>
+  {include file="catalog/_partials/productlist.tpl" products=$products cssClass="row" productClass="col-xs-12 col-sm-6 col-lg-4 col-xl-3"}
+  <a class="all-product-link float-xs-left float-md-right h4" href="{$allProductsLink}">
+    {l s='All products' d='Shop.Theme.Catalog'}<i class="material-icons">&#xE315;</i>
+  </a>
+</section>

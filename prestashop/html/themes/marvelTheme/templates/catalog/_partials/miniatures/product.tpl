@@ -23,7 +23,7 @@
     * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
     *}
    {block name='product_miniature_item'}
-   <div class="js-product 2 product{if !empty($productClasses)} {$productClasses}{/if}">
+   <div class="js-product 2 product{if !empty($productClasses)} {$productClasses}{/if} custom__product_miniature">
      <article class="product-miniature js-product-miniature" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}">
        <div class="thumbnail-container">
          <div class="thumbnail-top">
@@ -66,13 +66,17 @@
            </div>
          </div>
    
-         <div class="product-description">
+         <div class="product-description custom__product_description">
            {block name='product_name'}
              {if $page.page_name == 'index'}
-               <h3 class="h3 product-title"><a href="{$product.url}" content="{$product.url}">{$product.name|truncate:30:'...'}</a></h3>
+               <h3 class="h3 product-title"><a class="custom__product_title" href="{$product.url}" content="{$product.url}">{$product.name|truncate:30:'...'}</a></h3>
              {else}
-               <h2 class="h3 product-title"><a href="{$product.url}" content="{$product.url}">{$product.name|truncate:30:'...'}</a></h2>
+               <h2 class="h3 product-title"><a class="custom__product_title" href="{$product.url}" content="{$product.url}">{$product.name|truncate:30:'...'}</a></h2>
              {/if}
+
+             <p class="stars" style="color: #d24b4b; font-weight: bold !important; font-size: 16px; text-align: center; margin-bottom: 0; margin-top: 1.5rem;">
+              &#9733; &#9733; &#9733; &#9733; &#9733;
+            </p>
            {/block}
    
            {block name='product_price_and_shipping'}
@@ -81,24 +85,37 @@
                  {if $product.has_discount}
                    {hook h='displayProductPriceBlock' product=$product type="old_price"}
    
-                   <span class="regular-price" aria-label="{l s='Regular price' d='Shop.Theme.Catalog'}">{$product.regular_price}</span>
+                   <span class="regular-price custom__product_title" aria-label="{l s='Regular price' d='Shop.Theme.Catalog'}">{$product.regular_price}</span>
                    {if $product.discount_type === 'percentage'}
-                     <span class="discount-percentage discount-product">{$product.discount_percentage}</span>
+                     <span class="discount-percentage discount-product custom__product_title">{$product.discount_percentage}</span>
                    {elseif $product.discount_type === 'amount'}
-                     <span class="discount-amount discount-product">{$product.discount_amount_to_display}</span>
+                     <span class="discount-amount discount-product custom__product_title">{$product.discount_amount_to_display}</span>
                    {/if}
                  {/if}
    
                  {hook h='displayProductPriceBlock' product=$product type="before_price"}
-   
-                 <span class="price" aria-label="{l s='Price' d='Shop.Theme.Catalog'}">
-                   {capture name='custom_price'}{hook h='displayProductPriceBlock' product=$product type='custom_price' hook_origin='products_list'}{/capture}
-                   {if '' !== $smarty.capture.custom_price}
-                     {$smarty.capture.custom_price nofilter}
-                   {else}
-                     {$product.price}
-                   {/if}
-                 </span>
+                  
+                 {if $product.has_discount}
+                  <span class="price custom__product_title custom__discount" aria-label="{l s='Price' d='Shop.Theme.Catalog'}">
+                    {capture name='custom_price'}{hook h='displayProductPriceBlock' product=$product type='custom_price' hook_origin='products_list'}{/capture}
+                    {if '' !== $smarty.capture.custom_price}
+                      {$smarty.capture.custom_price nofilter}
+                    {else}
+                      {$product.price}
+                    {/if}
+                  </span>
+                 {/if}
+
+                 {if !$product.has_discount}
+                  <span class="price custom__product_title custom__discount custom__regular" aria-label="{l s='Price' d='Shop.Theme.Catalog'}">
+                    {capture name='custom_price'}{hook h='displayProductPriceBlock' product=$product type='custom_price' hook_origin='products_list'}{/capture}
+                    {if '' !== $smarty.capture.custom_price}
+                      {$smarty.capture.custom_price nofilter}
+                    {else}
+                      {$product.price}
+                    {/if}
+                  </span>
+                 {/if}
    
                  {hook h='displayProductPriceBlock' product=$product type='unit_price'}
    
@@ -111,8 +128,6 @@
              {hook h='displayProductListReviews' product=$product}
            {/block}
          </div>
-   
-         {include file='catalog/_partials/product-flags.tpl'}
        </div>
      </article>
    </div>
