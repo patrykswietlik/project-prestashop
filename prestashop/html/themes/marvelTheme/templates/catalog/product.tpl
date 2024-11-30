@@ -79,7 +79,7 @@
 
               <div style="width: 100%;">
                 <div style="color: #707070;">
-                  <span class="stars" style="color: #d24b4b; font-weight: 400 !important; font-size: 16px;">
+                  <span class="stars" style="color: #d24b4b; font-size: 16px; font-weight: bold !important;">
                     &#9733; &#9733; &#9733; &#9733; &#9733;
                   </span>
                   (<span class="count">3</span> customer reviews)
@@ -180,15 +180,13 @@
                       data-toggle="tab"
                       href="#myReviews"
                       role="tab"
-                      aria-controls="comments">reviews (x)</a>
+                      aria-controls="comments">reviews (0)</a>
                   </li>
                 </ul>
 
                 <div class="tab-content" id="tab-content">
                   <div class="tab-pane fade" id="myReviews" role="tabpanel">
-                    //todo
                       {hook h='displayFooterProduct' product=$product category=$category}
-                    
                   </div>
                   <div class="tab-pane fade in{if $product.description} active js-product-tab-active{/if}" id="description" role="tabpanel">
                     {block name='product_description'}
