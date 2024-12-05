@@ -24,9 +24,10 @@ services:
       - prestashop_network
 
   prestashop:
-    image: prestashop/prestashop:1.7.8
+    image: d4m14n/prestashop-1-7-8-ssl:v1.0
     container_name: prestashop
     ports:
+      - 443:443
       - 8080:80
     depends_on:
       - mysql

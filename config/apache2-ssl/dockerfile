@@ -1,0 +1,15 @@
+FROM prestashop/prestashop:1.7.8
+
+
+COPY localhost.crt /etc/ssl/certs/localhost.crt
+COPY localhost.key /etc/ssl/private/localhost.key
+
+COPY my-ssl.conf /etc/apache2/sites-available/my-ssl.conf
+
+RUN a2enmod ssl && \
+    a2enmod rewrite && \
+    a2dissite 000-default default-ssl && \
+    a2ensite my-ssl
+
+# docker build -t d4m14n/prestashop-1-7-8-ssl:v1.0 .
+# docker run --rm -p 443:443  -it  d4m14n/prestashop-1-7-8-ssl:v1.0
