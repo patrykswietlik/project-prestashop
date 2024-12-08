@@ -6,12 +6,29 @@ import json
 from jinja2 import Template
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
+def find_category_name(slug):
+    with open('./categories.json', 'r', encoding='utf-8') as file:
+        category_data = json.load(file)
+
+        for category_element in category_data:
+            names = category_element.get("name", [])
+            urls = category_element.get("urls", [])
+
+            for i in range(len(urls)):
+                url = urls[i]
+                extracted_url = url.split('/')[-2]
+
+                if extracted_url == slug:
+                    return names[i]
+
+    return slug
+
 def create_category(name, id_parent = 2):
     with open('./xml/category.xml', 'r', encoding='utf-8') as schema_file:
         schema_template = schema_file.read()
 
         variables = {
-            "name": name,
+            "name": find_category_name(name),
             "link_rewrite": name,
             "description": name,
             "id_parent": id_parent 
@@ -126,7 +143,7 @@ def update_single_stock(id_stock, id_product, id_product_attribute):
 
     return response.status_code == 200
 
-def create_product(product_url, product_name, rating, original_price, discounted_price, categories):
+def create_product(product_url, product_name, rating, original_price, discounted_price, categories, product_type):
     with open('./xml/product.xml', 'r', encoding='utf-8') as schema_file:
         schema_template = schema_file.read()
 
@@ -136,9 +153,11 @@ def create_product(product_url, product_name, rating, original_price, discounted
             product_url = product_url[:63]
 
         original_price = original_price.replace('$', '')
+        original_price = original_price.replace(",", "")
 
         if discounted_price:
             discounted_price = discounted_price.replace('$', '')
+            discounted_price = discounted_price.replace(",", "")
         else:
             discounted_price = 0
 
@@ -167,7 +186,8 @@ def create_product(product_url, product_name, rating, original_price, discounted
             'description': f"Opis produktu: {product_name}. Ocena: {rating}",
             'description_short': f"{product_name} - krótki opis.",
             'categories': categories_data,
-            'discounted_price': discounted_price
+            'discounted_price': discounted_price,
+            'product_type': product_type
         }
 
         template = Template(schema_template)
@@ -328,6 +348,7 @@ def load_products():
     with open('./productsGrid.json', 'r', encoding='utf-8') as file:
         products_data = json.load(file)
         created_categories = {}
+        product_category = ""
 
         for category in products_data:
             category_url, *products = category
@@ -344,6 +365,7 @@ def load_products():
                         root = fromstring(category_response.text)
                         category_id = root.find('.//id').text
                         created_categories[category_element] = category_id
+                        product_category = category_element
                     except ParseError:
                         print("Failed to parse XML response.")
                         print("Response Text:", category_response.text)
@@ -352,22 +374,40 @@ def load_products():
             for product in products:
                 product_url, product_name, rating, original_price, discounted_price = product
 
-                options = {
-                    "name": "Rozmiar",
-                    "values": [
-                        {"id": 1, "name": "XS", "quantity": 10},
-                        {"id": 2, "name": "S", "quantity": 15},
-                        {"id": 3, "name": "M", "quantity": 20},
-                        {"id": 4, "name": "L", "quantity": 25}
-                    ]
-                }       
+                if product_category == 'marvel-hoodies' or product_category == 'marvel-tshirts':
+                    options = {
+                        "name": "Rozmiar",
+                        "values": [
+                            {"id": 1, "name": "XS", "quantity": 10},
+                            {"id": 2, "name": "S", "quantity": 15},
+                            {"id": 3, "name": "M", "quantity": 20},
+                            {"id": 4, "name": "L", "quantity": 25}
+                        ]
+                    }       
+
+                elif product_category == 'marvel-superhero-action-figures-collectible':
+                    options = {
+                        "name": "Wielkość",
+                        "values": [
+                            {"id": 1, "name": "Duża", "quantity": 10},
+                            {"id": 2, "name": "Mała", "quantity": 15},
+                        ]
+                    }
+
+                else:
+                    options = None   
 
                 if len(category_elements) == 0:
                     category_forwars = [category_elements]
                 else:
                     category_forwars = [(name, created_categories[name]) for name in category_elements]
 
-                product_id, product_ref = create_product(product_url, product_name, rating, original_price, discounted_price, category_forwars)
+                if options:
+                    product_type = 'combinations'
+                else:
+                    product_type = 'standard'
+
+                product_id, product_ref = create_product(product_url, product_name, rating, original_price, discounted_price, category_forwars, product_type)
 
                 if product_id and options:
                     option_name = options["name"]
@@ -389,7 +429,6 @@ def load_products():
                             print(f"Failed to update stock for Product ID {product_id}")
                 
                 upload_image_for_product(product_id, product_ref)
-                input("End")
 
 load_dotenv()
 

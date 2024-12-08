@@ -4,7 +4,7 @@
         <id_product><![CDATA[{{product_combination_id}}]]></id_product>
         <reference><![CDATA[{{reference}}]]></reference>
         <supplier_reference><![CDATA[mfr_1]]></supplier_reference>
-        <price><![CDATA[{{price}}]]></price>
+        <price><![CDATA[0]]></price>
         <minimal_quantity><![CDATA[0]]></minimal_quantity>
         <associations>
             <product_option_values nodeType="product_option_value" api="product_option_values">

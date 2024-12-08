@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
+from selenium.webdriver.chrome.options import Options
 
 
 '''
@@ -26,7 +27,7 @@ password = 'patryk.swietlik.off@gmail.com'
 
 
 def add_10_products_from_2_categories(driver):
-    categories = ['http://localhost:8080/6-accessories', 'http://localhost:8080/3-clothes']
+    categories = ['https://localhost/20-electricals-tech', 'https://localhost/18-cosplay-costume']
     productsToAdd = 10
 
     for j in range(len(categories)):
@@ -65,7 +66,7 @@ def add_10_products_from_2_categories(driver):
 
 
 def search_and_add_by_name(driver):
-    name = 'Hummingbird'
+    name = 'Marvel Deadpool Mask'
     searchInput = driver.find_element(By.NAME, 's')
     searchInput.send_keys(name)
     searchInput.submit()
@@ -84,7 +85,7 @@ def search_and_add_by_name(driver):
 
 
 def delete_3_products(driver):
-    cart = 'http://localhost:8080/koszyk?action=show'
+    cart = 'https://localhost/koszyk?action=show'
     driver.get(cart)
     for _ in range(3):
         WebDriverWait(driver, 10).until(
@@ -103,7 +104,7 @@ def delete_3_products(driver):
 
 
 def register_account(driver):
-    registration = 'http://localhost:8080/logowanie?create_account=1'
+    registration = 'https://localhost/logowanie?create_account=1'
     firstName = 'Jan'
     lastName = 'Kowalskowy'
     email = 'aaaa.bbbb' + str(random.randint(0, 999999)) + '@wp.pl'
@@ -121,7 +122,7 @@ def register_account(driver):
 
 
 def submit_order(driver):
-    order = 'http://localhost:8080/zam%C3%B3wienie'
+    order = 'https://localhost/zam%C3%B3wienie'
     city = 'Miasto'
     address = 'Uliczna'
     postCode = '12-345'
@@ -153,13 +154,13 @@ def submit_order(driver):
 
 
 def check_order_status(driver):
-    driver.get('http://localhost:8080/historia-zamowien')
+    driver.get('https://localhost/historia-zamowien')
     orders = driver.find_elements(By.CLASS_NAME, 'order-actions')
     orders[0].find_element(By.TAG_NAME, 'a').click()
     print("Test 6 done")
 
 def vat_invoice(driver):
-    driver.get('http://localhost:8080/admin870iqyhcr/index.php/sell/orders/?_token=bzGhfgUMzycsd_pUkKhQzka7nGyiXK0s3dJkACX_7L4')
+    driver.get('https://localhost/admin-panel/index.php?controller=AdminDashboard&token=84712387991251295dbb7ee351ab606e')
     driver.find_element(By.ID, 'email').send_keys(login)
     driver.find_element(By.ID, 'passwd').send_keys(password)
     driver.find_element(By.ID, 'submit_login').click()
@@ -173,15 +174,18 @@ def vat_invoice(driver):
     )
     driver.find_elements(By.CLASS_NAME, 'dropdown-toggle')[5].click()
     driver.find_elements(By.CLASS_NAME, 'js-dropdown-item')[4].click()
-    driver.get('http://localhost:8080/historia-zamowien')
+    driver.get('https://localhost/historia-zamowien')
     driver.find_elements(By.CLASS_NAME, 'text-sm-center')[1].click()
+    print("Test 7 done")
 
+options = Options()
+options.add_argument('--ignore-certificate-errors')
+options.add_argument('--allow-insecure-localhost')
+options.add_argument('--disable-web-security')
 
-
-
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=options)
 driver.maximize_window()
-driver.get('http://localhost:8080')
+driver.get('https://localhost/')
 
 add_10_products_from_2_categories(driver)
 search_and_add_by_name(driver)
