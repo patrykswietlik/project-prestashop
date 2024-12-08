@@ -19,6 +19,10 @@
     <active><![CDATA[1]]></active>
     <available_for_order><![CDATA[1]]></available_for_order>
     <show_price><![CDATA[1]]></show_price>
+    <width><![CDATA[10]]></width>
+    <height><![CDATA[10]]></height>
+    <depth><![CDATA[10]]></depth>
+    <weight><![CDATA[10]]></weight>
     <meta_description>
         <language id="1"><![CDATA[{{meta_description}}]]></language>
         <language id="2"><![CDATA[{{meta_description}}]]></language>

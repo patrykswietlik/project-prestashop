@@ -79,6 +79,24 @@ def get_stock_available(product_id):
             print("Response Text:", response.text)
     return None
 
+def get_product_description(product_reference):
+    with open("./productDetails.json", "r", encoding="utf-8") as file:
+        products_details = json.load(file)
+
+        for product in products_details:
+            product_url = product[0]
+            product_descriptions = product[-2]
+
+            ref_from_json = product_url.split("/")[-2]
+
+            if ref_from_json != product_reference:
+                continue
+
+            return product_descriptions[0]
+        
+    return product_reference
+    
+
 def update_stock_available(stock_id, quantity, id_product, ):
     with open('./xml/stock.xml', 'r', encoding='utf-8') as schema_file:
         schema_template = schema_file.read()
@@ -178,13 +196,13 @@ def create_product(product_url, product_name, rating, original_price, discounted
             'reference': product_url,
             'supplier_reference': 1,
             'price': original_price,
-            'meta_description': f"{product_name} - rating {rating}",
+            'meta_description': get_product_description(product_url),
             'meta_keywords': f"{product_name}, product",
             'meta_title': product_name,
             'link_rewrite': product_url,
             'name': product_name,
-            'description': f"Opis produktu: {product_name}. Ocena: {rating}",
-            'description_short': f"{product_name} - krótki opis.",
+            'description': get_product_description(product_url),
+            'description_short': get_product_description(product_url),
             'categories': categories_data,
             'discounted_price': discounted_price,
             'product_type': product_type
@@ -429,6 +447,7 @@ def load_products():
                             print(f"Failed to update stock for Product ID {product_id}")
                 
                 upload_image_for_product(product_id, product_ref)
+                input()
 
 load_dotenv()
 
