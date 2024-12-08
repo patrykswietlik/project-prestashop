@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prestashop xmlns:xlink="http://www.w3.org/1999/xlink">
+    <product_option>
+        <is_color_group><![CDATA[0]]></is_color_group>
+        <group_type><![CDATA[select]]></group_type>
+        <name>
+            <language id="2"><![CDATA[{{name}}]]></language>
+        </name>
+        <public_name>
+            <language id="2"><![CDATA[{{name}}]]></language>
+        </public_name>
+    </product_option>
+</prestashop>
