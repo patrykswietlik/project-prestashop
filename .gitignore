@@ -9,4 +9,4 @@
 
 *.vsix
 
-config/backup/
+/config/backup/backup/modules

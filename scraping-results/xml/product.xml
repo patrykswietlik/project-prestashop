@@ -11,13 +11,14 @@
     <reference><![CDATA[{{reference}}]]></reference>
     <supplier_reference><![CDATA[{{supplier_reference}}]]></supplier_reference>
     <state><![CDATA[1]]></state>
-    <product_type><![CDATA[combinations]]></product_type>
+    <product_type><![CDATA[{{product_type}}]]></product_type>
     <price><![CDATA[{{price}}]]></price>
     <my_price><![CDATA[{{discounted_price}}]]></my_price>
     <use_reduction><![CDATA[0]]></use_reduction>
     <unit_price><![CDATA[0]]></unit_price>
     <active><![CDATA[1]]></active>
     <available_for_order><![CDATA[1]]></available_for_order>
+    <show_price><![CDATA[1]]></show_price>
     <meta_description>
         <language id="1"><![CDATA[{{meta_description}}]]></language>
         <language id="2"><![CDATA[{{meta_description}}]]></language>
