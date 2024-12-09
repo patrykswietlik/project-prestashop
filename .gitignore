@@ -8,3 +8,5 @@
 .history/
 
 *.vsix
+
+/config/backup/backup/modules

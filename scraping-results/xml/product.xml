@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prestashop xmlns:xlink="http://www.w3.org/1999/xlink">
+<product>
+    <id_manufacturer><![CDATA[{{id_manufacturer}}]]></id_manufacturer>
+    <id_supplier><![CDATA[{{id_supplier}}]]></id_supplier>
+    <id_category_default><![CDATA[{{id_category_default}}]]></id_category_default>
+    <new><![CDATA[1]]></new>
+    <id_tax_rules_group><![CDATA[1]]></id_tax_rules_group>
+    <type><![CDATA[1]]></type>
+    <id_shop_default><![CDATA[1]]></id_shop_default>
+    <reference><![CDATA[{{reference}}]]></reference>
+    <supplier_reference><![CDATA[{{supplier_reference}}]]></supplier_reference>
+    <state><![CDATA[1]]></state>
+    <product_type><![CDATA[{{product_type}}]]></product_type>
+    <price><![CDATA[{{price}}]]></price>
+    <my_price><![CDATA[{{discounted_price}}]]></my_price>
+    <use_reduction><![CDATA[0]]></use_reduction>
+    <unit_price><![CDATA[0]]></unit_price>
+    <active><![CDATA[1]]></active>
+    <available_for_order><![CDATA[1]]></available_for_order>
+    <show_price><![CDATA[1]]></show_price>
+    <width><![CDATA[10]]></width>
+    <height><![CDATA[10]]></height>
+    <depth><![CDATA[10]]></depth>
+    <weight><![CDATA[10]]></weight>
+    <meta_description>
+        <language id="1"><![CDATA[{{meta_description}}]]></language>
+        <language id="2"><![CDATA[{{meta_description}}]]></language>
+    </meta_description>
+    <meta_keywords>
+        <language id="1"><![CDATA[{{meta_keywords}}]]></language>
+        <language id="2"><![CDATA[{{meta_keywords}}]]></language>
+    </meta_keywords>
+    <meta_title>
+        <language id="1"><![CDATA[{{meta_title}}]]></language>
+        <language id="2"><![CDATA[{{meta_title}}]]></language>
+    </meta_title>
+    <link_rewrite>
+        <language id="1"><![CDATA[{{link_rewrite}}]]></language>
+        <language id="2"><![CDATA[{{link_rewrite}}]]></language>
+    </link_rewrite>
+    <name>
+        <language id="1"><![CDATA[{{name}}]]></language>
+        <language id="2"><![CDATA[{{name}}]]></language>
+    </name>
+    <description>
+        <language id="1"><![CDATA[{{description}}]]></language>
+        <language id="2"><![CDATA[{{description}}]]></language>
+    </description>
+    <description_short>
+        <language id="1"><![CDATA[{{description_short}}]]></language>
+        <language id="2"><![CDATA[{{description_short}}]]></language>
+    </description_short>
+    <associations>
+        <categories>
+            {{categories}}
+        </categories>
+    </associations>
+</product>
+</prestashop>

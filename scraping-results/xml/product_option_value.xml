@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prestashop xmlns:xlink="http://www.w3.org/1999/xlink">
+    <product_option_value>
+        <id_attribute_group><![CDATA[{{id_product_option}}]]></id_attribute_group>
+        <name>
+            <language id="2"><![CDATA[{{value}}]]></language>
+        </name>
+    </product_option_value>
+</prestashop>
