@@ -24,7 +24,7 @@ services:
       - prestashop_network
 
   prestashop:
-    image: d4m14n/prestashop-1-7-8-ssl:v1.0
+    image: patrykswietlik/project-prestashop:1.1
     container_name: prestashop
     ports:
       - 443:443
