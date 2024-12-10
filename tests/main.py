@@ -27,7 +27,7 @@ password = 'patryk.swietlik.off@gmail.com'
 
 
 def add_10_products_from_2_categories(driver):
-    categories = ['https://localhost/272-homeware', 'https://localhost/51-homeware']
+    categories = ['https://localhost/272-homeware', 'https://localhost/271-electricals-tech']
     productsToAdd = 10
 
     for j in range(len(categories)):
