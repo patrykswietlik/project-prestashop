@@ -14,18 +14,12 @@ jobs:
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
-
-    - name: echo
-      run: echo "${{ secrets.PASSWORD }}" 
-    
-    - name: echo2
-      run: echo "${{ secrets.LOGIN }}"
       
     - name: Log in to Docker Hub
       uses: docker/login-action@v2  # Logowanie do Docker Hub
       with:
-        username: ${{ secrets.LOGIN }}  # Zmienna środowiskowa przechowująca dane logowania
-        password: ${{ secrets.PASSWORD }}
+        username: ${{ secrets.DOCKERHUB_LOGIN }}  # Zmienna środowiskowa przechowująca dane logowania
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v3
