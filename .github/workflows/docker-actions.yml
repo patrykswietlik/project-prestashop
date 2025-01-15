@@ -20,9 +20,6 @@ jobs:
     
     - name: echo2
       run: echo "${{ secrets.LOGIN }}"
-    
-    - name: echo3
-      run: echo "${{ DockerHub.LOGIN }}"
       
     - name: Log in to Docker Hub
       uses: docker/login-action@v2  # Logowanie do Docker Hub
