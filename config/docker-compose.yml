@@ -24,7 +24,12 @@ services:
       - prestashop_network
 
   prestashop:
-    image: patrykswietlik/project-prestashop:1.1
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+    image: presta
     container_name: prestashop
     ports:
       - 443:443
