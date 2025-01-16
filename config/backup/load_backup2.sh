@@ -1,14 +1,9 @@
 #!/bin/sh
 
-echo "Restoring a database from a file ./backup/prestashop_db_backup.sql" 
-
 echo "host: ${DB_SERVER}."
 echo "name: ${DB_NAME}. "
 echo "user: ${DB_USER}. "
 echo "password: ${DB_PASSWD}. "
-
-mysql -h $DB_SERVER -u $DB_USER -p$DB_PASSWD $DB_NAME < "./backup/prestashop_db_backup.sql" 
-
 echo "<?php return array (
   'parameters' => 
   array (
@@ -34,6 +29,10 @@ echo "<?php return array (
     'new_cookie_key' => 'def00000250407408e5a3b0111fe0ffb21fc56831c7b3b8d225b1b8676f99e63fb24987c285129ad816bdba3feef7ab51314165bd3738d5e349e9d00bbae7bb491a53ebf',
   ),
 );" > /var/www/html/app/config/parameters.php
+
+echo "Restoring a database from a file ./backup/prestashop_db_backup.sql" 
+
+mysql -h $DB_SERVER -u $DB_USER -p$DB_PASSWD $DB_NAME < "./backup/prestashop_db_backup.sql" 
 
 echo "end"
 
