@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
 
 
 #COPY presta files
-COPY prestashop/html/app/config/parameters.php /var/www/html/app/config/parameters.php
+# COPY prestashop/html/app/config/parameters.php /var/www/html/app/config/parameters.php
 COPY prestashop/html/themes /var/www/html/themes
 COPY prestashop/html/themes/marvelTheme /var/www/html/themes/marvelTheme
 
