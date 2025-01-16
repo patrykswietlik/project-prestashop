@@ -30,6 +30,8 @@ echo "<?php return array (
   ),
 );" > /var/www/html/app/config/parameters.php
 
+sleep 2.5
+
 echo "Restoring a database from a file ./backup/prestashop_db_backup.sql" 
 
 mysql -h $DB_SERVER -u $DB_USER -p$DB_PASSWD $DB_NAME < "./backup/prestashop_db_backup.sql" 
