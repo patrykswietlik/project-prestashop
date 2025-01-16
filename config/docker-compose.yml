@@ -29,7 +29,7 @@ services:
         limits:
           cpus: '0.50'
           memory: 512M
-    image: d4m14n/presta:v1.0
+    image: patrykswietlik/project-prestashop:latest
     container_name: prestashop
     ports:
       - 443:443
