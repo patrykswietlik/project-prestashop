@@ -30,11 +30,14 @@ echo "<?php return array (
   ),
 );" > /var/www/html/app/config/parameters.php
 
-sleep 2.5
-
 echo "Restoring a database from a file ./backup/prestashop_db_backup.sql" 
 
-mysql -h $DB_SERVER -u $DB_USER -p$DB_PASSWD $DB_NAME < "./backup/prestashop_db_backup.sql" 
+until mysql -h $DB_SERVER -u $DB_USER -p$DB_PASSWD -e "SELECT 1;" > /dev/null 2>&1; do
+    echo "Waiting for MySQL to be ready..."
+    sleep 5
+done
+
+mysql -h $DB_SERVER -u $DB_USER -p$DB_PASSWD $DB_NAME < "./backup/prestashop_db_backup.sql"
 
 echo "end"
 
