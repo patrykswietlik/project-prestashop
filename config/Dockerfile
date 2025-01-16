@@ -26,7 +26,6 @@ COPY prestashop/html/app/config/parameters.yml.dist /var/www/html/app/config/par
 COPY prestashop/html/.htaccess /var/www/html/.htaccess
 COPY prestashop/html/config/themes /var/www/html/config/themes
 COPY prestashop/html/img /var/www/html/img
-COPY prestashop/html/modules /var/www/html/modules
 COPY prestashop/html/themes/marvelTheme /var/www/html/themes/marvelTheme
 
 
