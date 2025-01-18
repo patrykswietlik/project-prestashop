@@ -44,10 +44,10 @@ rm -rf /var/www/html/var/cache/dev/*
 rm -rf /var/www/html/var/cache/prod/*
 
 echo "Changing ownership of /var/www/html to www-data"
-chown -R www-data:www-data /var/www/html
+chown -R www-data:www-data /var/www/html/modules
 
 echo "Setting read and write permissions for group on /var/www/html"
-chmod -R g+rw /var/www/html
+chmod -R g+rw /var/www/html/modules
 
 echo "end"
 
