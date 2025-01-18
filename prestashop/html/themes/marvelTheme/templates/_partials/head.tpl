@@ -112,3 +112,33 @@
 
 {block name='hook_extra'}{/block}
 
+{literal}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RGS3TVW23W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-RGS3TVW23W');
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const bannerElement = document.querySelector('[alt="Superheroes"]');
+
+    if (bannerElement) {
+      bannerElement.addEventListener('click', function () {
+
+        gtag('event', 'banner_event', {
+          category: 'Banner Interaction',
+          action: 'Click',               
+          label: 'Homepage Banner',      
+          value: 1                      
+        });
+        console.log('banner_event emitted');
+      });
+    }
+  });
+</script>
+{/literal}
+
