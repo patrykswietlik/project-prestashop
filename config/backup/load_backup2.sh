@@ -43,5 +43,11 @@ echo "Removing cache"
 rm -rf /var/www/html/var/cache/dev/*
 rm -rf /var/www/html/var/cache/prod/*
 
+echo "Changing ownership of /var/www/html to www-data"
+sudo chown -R www-data:www-data /var/www/html
+
+echo "Setting read and write permissions for group on /var/www/html"
+sudo chmod -R g+rw /var/www/html
+
 echo "end"
 
