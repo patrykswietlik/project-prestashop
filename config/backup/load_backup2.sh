@@ -39,5 +39,9 @@ done
 
 mysql -h $DB_SERVER -u $DB_USER -p$DB_PASSWD $DB_NAME < "./backup/prestashop_db_backup.sql"
 
+echo "Removing cache"
+rm -rf /var/www/html/var/cache/dev/*
+rm -rf /var/www/html/var/cache/prod/*
+
 echo "end"
 
