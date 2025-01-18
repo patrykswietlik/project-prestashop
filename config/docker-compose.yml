@@ -44,5 +44,13 @@ services:
     networks:
       - prestashop_network
 
+  memcached:
+    image: memcached:latest
+    container_name: memcached
+    ports:
+      - '11211:11211'
+    networks:
+      - prestashop_network
+
 networks:
   prestashop_network:
