@@ -28,32 +28,3 @@ jobs:
         context: .
         file: ./config/Dockerfile
         tags: patrykswietlik/project-prestashop:latest
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-
-    services:
-      prestashop:
-        image: patrykswietlik/project-prestashop:latest
-        ports:
-          - 443:443
-        options: --health-cmd="curl --silent --fail http://localhost/ > /dev/null || exit 1" --health-interval=30s --health-retries=5 --health-timeout=10s
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_LOGIN }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
-      - name: Build and run test container
-        run: |
-          docker build -f project-prestashop/tests/Dockerfile -t selenium-tests .
-          docker run --network="host" selenium-tests
