@@ -35,7 +35,7 @@ if not SHOP_URL.endswith('/'):
 print(f"Using shop URL: {SHOP_URL}")
 
 def add_10_products_from_2_categories(driver):
-    categories = [f'{SHOP_URL}272-homeware', f'{SHOP_URL}271-electricals-tech']
+    categories = [f'{SHOP_URL}index.php?id_category=51&controller=category', f'{SHOP_URL}index.php?id_category=50&controller=category']
     productsToAdd = 10
 
     for j in range(len(categories)):
@@ -93,7 +93,7 @@ def search_and_add_by_name(driver):
 
 
 def delete_3_products(driver):
-    cart = f'{SHOP_URL}koszyk?action=show'
+    cart = f'{SHOP_URL}index.php?controller=cart&action=show'
     driver.get(cart)
     for _ in range(3):
         WebDriverWait(driver, 10).until(
@@ -112,7 +112,7 @@ def delete_3_products(driver):
 
 
 def register_account(driver):
-    registration = f'{SHOP_URL}logowanie?create_account=1'
+    registration = f'{SHOP_URL}index.php?controller=authentication&create_account=1'
     firstName = 'Jan'
     lastName = 'Kowalskowy'
     email = 'aaaa.bbbb' + str(random.randint(0, 999999)) + '@wp.pl'
@@ -130,7 +130,7 @@ def register_account(driver):
 
 
 def submit_order(driver):
-    order = f'{SHOP_URL}zam%C3%B3wienie'
+    order = f'{SHOP_URL}index.php?controller=order'
     city = 'Miasto'
     address = 'Uliczna'
     postCode = '12-345'
@@ -162,7 +162,7 @@ def submit_order(driver):
 
 
 def check_order_status(driver):
-    driver.get(f'{SHOP_URL}historia-zamowien')
+    driver.get(f'{SHOP_URL}index.php?controller=history')
     orders = driver.find_elements(By.CLASS_NAME, 'order-actions')
     orders[0].find_element(By.TAG_NAME, 'a').click()
     print("Test 6 done")
@@ -182,7 +182,7 @@ def vat_invoice(driver):
     )
     driver.find_elements(By.CLASS_NAME, 'dropdown-toggle')[5].click()
     driver.find_elements(By.CLASS_NAME, 'js-dropdown-item')[4].click()
-    driver.get(f'{SHOP_URL}historia-zamowien')
+    driver.get(f'{SHOP_URL}index.php?controller=history')
     driver.find_elements(By.CLASS_NAME, 'text-sm-center')[1].click()
     print("Test 7 done")
 
