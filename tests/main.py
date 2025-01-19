@@ -25,9 +25,17 @@ j. Pobranie faktury VAT.
 login = 'patryk.swietlik.off@gmail.com'
 password = 'patryk.swietlik.off@gmail.com'
 
+SHOP_URL = os.getenv('SHOP_URL', 'https://localhost/')
+if len(sys.argv) > 1:
+    SHOP_URL = sys.argv[1]
+
+if not SHOP_URL.endswith('/'):
+    SHOP_URL += '/'
+
+print(f"Using shop URL: {SHOP_URL}")
 
 def add_10_products_from_2_categories(driver):
-    categories = ['https://localhost/272-homeware', 'https://localhost/271-electricals-tech']
+    categories = [f'{SHOP_URL}272-homeware', f'{SHOP_URL}271-electricals-tech']
     productsToAdd = 10
 
     for j in range(len(categories)):
@@ -85,7 +93,7 @@ def search_and_add_by_name(driver):
 
 
 def delete_3_products(driver):
-    cart = 'https://localhost/koszyk?action=show'
+    cart = f'{SHOP_URL}koszyk?action=show'
     driver.get(cart)
     for _ in range(3):
         WebDriverWait(driver, 10).until(
@@ -104,7 +112,7 @@ def delete_3_products(driver):
 
 
 def register_account(driver):
-    registration = 'https://localhost/logowanie?create_account=1'
+    registration = f'{SHOP_URL}logowanie?create_account=1'
     firstName = 'Jan'
     lastName = 'Kowalskowy'
     email = 'aaaa.bbbb' + str(random.randint(0, 999999)) + '@wp.pl'
@@ -122,7 +130,7 @@ def register_account(driver):
 
 
 def submit_order(driver):
-    order = 'https://localhost/zam%C3%B3wienie'
+    order = f'{SHOP_URL}zam%C3%B3wienie'
     city = 'Miasto'
     address = 'Uliczna'
     postCode = '12-345'
@@ -154,13 +162,13 @@ def submit_order(driver):
 
 
 def check_order_status(driver):
-    driver.get('https://localhost/historia-zamowien')
+    driver.get(f'{SHOP_URL}historia-zamowien')
     orders = driver.find_elements(By.CLASS_NAME, 'order-actions')
     orders[0].find_element(By.TAG_NAME, 'a').click()
     print("Test 6 done")
 
 def vat_invoice(driver):
-    driver.get('https://localhost/admin-panel/index.php?controller=AdminDashboard&token=84712387991251295dbb7ee351ab606e')
+    admin_url = f'{SHOP_URL}admin-panel/'
     driver.find_element(By.ID, 'email').send_keys(login)
     driver.find_element(By.ID, 'passwd').send_keys(password)
     driver.find_element(By.ID, 'submit_login').click()
@@ -174,7 +182,7 @@ def vat_invoice(driver):
     )
     driver.find_elements(By.CLASS_NAME, 'dropdown-toggle')[5].click()
     driver.find_elements(By.CLASS_NAME, 'js-dropdown-item')[4].click()
-    driver.get('https://localhost/historia-zamowien')
+    driver.get(f'{SHOP_URL}historia-zamowien')
     driver.find_elements(By.CLASS_NAME, 'text-sm-center')[1].click()
     print("Test 7 done")
 
@@ -185,7 +193,7 @@ options.add_argument('--disable-web-security')
 
 driver = webdriver.Chrome(options=options)
 driver.maximize_window()
-driver.get('https://localhost/')
+driver.get(SHOP_URL)
 
 add_10_products_from_2_categories(driver)
 search_and_add_by_name(driver)
