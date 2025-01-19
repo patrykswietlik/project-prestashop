@@ -28,7 +28,3 @@ jobs:
         context: .
         file: ./config/Dockerfile
         tags: patrykswietlik/project-prestashop:latest
-        build-args: |
-          COOKIE_KEY=${{ secrets.COOKIE_KEY }}
-          COOKIE_IV=${{ secrets.COOKIE_IV }}
-          NEW_COOKIE_KEY=${{ secrets.NEW_COOKIE_KEY }}
