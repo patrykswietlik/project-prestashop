@@ -32,8 +32,7 @@ services:
     image: patrykswietlik/project-prestashop:latest
     container_name: prestashop
     ports:
-      - 443:443
-      - 8080:80
+      - 18977:443
     depends_on:
       - mysql
     environment:
@@ -51,6 +50,23 @@ services:
       - '11211:11211'
     networks:
       - prestashop_network
+
+  selenium-tests:
+    build:
+      context: .
+      dockerfile: project-prestashop/tests/Dockerfile
+    depends_on:
+      - prestashop
+    networks:
+      - prestashop_network
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "https://prestashop:18977", "||", "exit", "1"]
+      interval: 30s
+      retries: 5
+      start_period: 10s
+    environment:
+      SHOP_URL: "https://prestashop:18977"
+
 
 networks:
   prestashop_network:
