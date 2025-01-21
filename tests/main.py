@@ -54,7 +54,7 @@ def add_10_products_from_2_categories(driver):
             )
             #czyszczenie input fielda
             driver.execute_script("arguments[0].value = '';", amountField)
-            amountField.send_keys(random.randint(1,4))
+            amountField.send_keys(str(random.randint(1,4)))
             addButton = driver.find_element(By.CLASS_NAME, 'add-to-cart')
             if addButton.get_attribute('disabled') in ['true', 'disabled']:
                 driver.get(categories[j])
