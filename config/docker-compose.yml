@@ -1,28 +1,4 @@
 services:
-  mysql:
-    image: mysql:8
-    container_name: prestashop-db
-    environment:
-      MYSQL_DATABASE: prestashop
-      MYSQL_ROOT_PASSWORD: prestashop
-    ports:
-      - 3306:3306
-    networks:
-      - prestashop_network
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: prestashop
-    ports:
-      - 8081:80
-    depends_on:
-      - mysql
-    networks:
-      - prestashop_network
-
   prestashop:
     deploy:
       resources:
@@ -52,4 +28,5 @@ services:
       - prestashop_network
       
 networks:
-  prestashop_network:
+  admin-mysql_default:
+    external: true
