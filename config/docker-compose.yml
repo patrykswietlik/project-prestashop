@@ -20,8 +20,6 @@ services:
     image: memcached:latest
     ports:
       - '11211:11211'
-    networks:
-      - prestashop_network
       
 networks:
   admin-mysql_default:
