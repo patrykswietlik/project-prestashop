@@ -1,3 +1,6 @@
+import os
+import sys
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -25,12 +28,7 @@ j. Pobranie faktury VAT.
 login = 'patryk.swietlik.off@gmail.com'
 password = 'patryk.swietlik.off@gmail.com'
 
-SHOP_URL = os.getenv('SHOP_URL', 'https://localhost/')
-if len(sys.argv) > 1:
-    SHOP_URL = sys.argv[1]
-
-if not SHOP_URL.endswith('/'):
-    SHOP_URL += '/'
+SHOP_URL='https://localhost:18977/'
 
 print(f"Using shop URL: {SHOP_URL}")
 
@@ -56,9 +54,11 @@ def add_10_products_from_2_categories(driver):
             )
             #czyszczenie input fielda
             driver.execute_script("arguments[0].value = '';", amountField)
-            amountField.send_keys(str(random.randint(1, 4)))
+            amountField.send_keys(random.randint(1,4))
             addButton = driver.find_element(By.CLASS_NAME, 'add-to-cart')
-            if addButton.get_attribute('disabled'):
+            if addButton.get_attribute('disabled') in ['true', 'disabled']:
+                driver.get(categories[j])
+                products = driver.find_elements(By.CLASS_NAME, 'thumbnail')
                 continue
             addButton.click()
             WebDriverWait(driver, 5).until(
@@ -169,6 +169,7 @@ def check_order_status(driver):
 
 def vat_invoice(driver):
     admin_url = f'{SHOP_URL}admin-panel/'
+    driver.get(admin_url)
     driver.find_element(By.ID, 'email').send_keys(login)
     driver.find_element(By.ID, 'passwd').send_keys(password)
     driver.find_element(By.ID, 'submit_login').click()
@@ -194,6 +195,7 @@ options.add_argument('--disable-web-security')
 driver = webdriver.Chrome(options=options)
 driver.maximize_window()
 driver.get(SHOP_URL)
+
 
 add_10_products_from_2_categories(driver)
 search_and_add_by_name(driver)
