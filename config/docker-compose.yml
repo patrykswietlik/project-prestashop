@@ -6,22 +6,18 @@ services:
           cpus: '0.50'
           memory: 512M
     image: patrykswietlik/project-prestashop:latest
-    container_name: prestashop
     ports:
       - 18977:443
-    depends_on:
-      - mysql
     environment:
-      DB_SERVER: prestashop-db
-      DB_NAME: prestashop
+      DB_SERVER: admin-mysql_db
+      DB_NAME: BE_189774
       DB_USER: root
-      DB_PASSWD: prestashop
+      DB_PASSWD: student
     networks:
-      - prestashop_network
+      - admin-mysql_default
 
   memcached:
     image: memcached:latest
-    container_name: memcached
     ports:
       - '11211:11211'
     networks:
