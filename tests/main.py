@@ -1,12 +1,16 @@
 import os
 import sys
+import warnings
 
+import urllib3
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
 from selenium.webdriver.chrome.options import Options
+import requests
+from xml.etree import ElementTree as ET
 
 
 '''
@@ -29,11 +33,31 @@ login = 'patryk.swietlik.off@gmail.com'
 password = 'patryk.swietlik.off@gmail.com'
 
 SHOP_URL='https://localhost:18977/'
+API_KEY = 
+
+warnings.filterwarnings("ignore", message="Unverified HTTPS request")
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+XML_TEMPLATE = """<?xml version="1.0" encoding="UTF-8"?>
+<prestashop xmlns:xlink="http://www.w3.org/1999/xlink">
+    <order_history>
+        <id />
+        <id_employee>1</id_employee>
+        <id_order_state>5</id_order_state>
+        <id_order>{order_id}</id_order>
+        <date_add />
+    </order_history>
+</prestashop>
+"""
+
+session = requests.Session()
+session.verify = False
+session.auth = requests.auth.HTTPBasicAuth(API_KEY, "")
 
 print(f"Using shop URL: {SHOP_URL}")
 
 def add_10_products_from_2_categories(driver):
-    categories = [f'{SHOP_URL}index.php?id_category=51&controller=category', f'{SHOP_URL}index.php?id_category=50&controller=category']
+    categories = [f'{SHOP_URL}index.php?id_category=53&controller=category', f'{SHOP_URL}index.php?id_category=48&controller=category']
     productsToAdd = 10
 
     for j in range(len(categories)):
@@ -54,13 +78,18 @@ def add_10_products_from_2_categories(driver):
             )
             #czyszczenie input fielda
             driver.execute_script("arguments[0].value = '';", amountField)
-            amountField.send_keys(str(random.randint(1,4)))
+            amountField.send_keys(random.randint(1,4))
             addButton = driver.find_element(By.CLASS_NAME, 'add-to-cart')
             if addButton.get_attribute('disabled') in ['true', 'disabled']:
                 driver.get(categories[j])
                 products = driver.find_elements(By.CLASS_NAME, 'thumbnail')
                 continue
-            addButton.click()
+            try:
+                addButton.click()
+            except Exception as e:
+                driver.get(categories[j])
+                products = driver.find_elements(By.CLASS_NAME, 'thumbnail')
+                continue
             WebDriverWait(driver, 5).until(
                 EC.visibility_of_element_located((By.CSS_SELECTOR, '.cart-content'))
             )
@@ -167,24 +196,46 @@ def check_order_status(driver):
     orders[0].find_element(By.TAG_NAME, 'a').click()
     print("Test 6 done")
 
+
+def get_latest_order_id():
+    response = session.get(f"{SHOP_URL}api/orders?sort=[id_DESC]&limit=1")
+    if not response.ok:
+        raise Exception(f"Failed to fetch latest order: {response.text}")
+
+    root = ET.fromstring(response.text)
+    order = root.find("orders/order")
+    if order is None:
+        raise Exception("No orders found.")
+
+    return int(order.attrib["id"])
+
+def update_order_state(order_id):
+    xml_data = XML_TEMPLATE.format(order_id=order_id)
+    response = session.post(f"{SHOP_URL}api/order_histories", data=xml_data)
+
+def mark_last_order_as_delivered():
+    try:
+        latest_order_id = get_latest_order_id()
+        update_order_state(latest_order_id)
+    except Exception as e:
+        pass
+
 def vat_invoice(driver):
-    admin_url = f'{SHOP_URL}admin-panel/'
-    driver.get(admin_url)
-    driver.find_element(By.ID, 'email').send_keys(login)
-    driver.find_element(By.ID, 'passwd').send_keys(password)
-    driver.find_element(By.ID, 'submit_login').click()
-    WebDriverWait(driver, 5).until(
-        EC.visibility_of_element_located((By.ID, 'subtab-AdminParentOrders'))
-    )
-    driver.find_element(By.ID, 'subtab-AdminParentOrders').click()
-    driver.find_element(By.ID, 'subtab-AdminOrders').click()
-    WebDriverWait(driver, 5).until(
-        EC.visibility_of_element_located((By.CLASS_NAME, 'dropdown-toggle'))
-    )
-    driver.find_elements(By.CLASS_NAME, 'dropdown-toggle')[5].click()
-    driver.find_elements(By.CLASS_NAME, 'js-dropdown-item')[4].click()
+    mark_last_order_as_delivered()
     driver.get(f'{SHOP_URL}index.php?controller=history')
-    driver.find_elements(By.CLASS_NAME, 'text-sm-center')[1].click()
+
+    table = driver.find_element(By.CSS_SELECTOR,
+                                'table.table.table-striped.table-bordered.table-labeled.hidden-sm-down')
+    rows = table.find_elements(By.TAG_NAME, 'tr')
+
+    if len(rows) > 1:
+        first_order = rows[1]
+
+        invoice_link = first_order.find_element(By.CSS_SELECTOR, 'td.text-sm-center.hidden-md-down a')
+
+        invoice_link.click()
+    else:
+        print("Brak zamówień na liście.")
     print("Test 7 done")
 
 options = Options()
