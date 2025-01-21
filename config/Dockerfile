@@ -4,9 +4,9 @@ WORKDIR /tmp
 
 #ssl
 COPY config/ssl/localhost.crt /etc/ssl/certs/
-RUN chmod 777 -R /etc/ssl/certs/
+RUN chmod 775 -R /etc/ssl/certs/
 COPY config/ssl/localhost.key /etc/ssl/private/
-RUN chmod 777 -R /etc/ssl/private/
+RUN chmod 775 -R /etc/ssl/private/
 COPY config/ssl/my-ssl.conf /etc/apache2/sites-available/my-ssl.conf
 RUN a2enmod ssl && \
     a2enmod rewrite && \
